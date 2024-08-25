@@ -1,0 +1,45 @@
+<?php
+
+return [
+    'title' => 'languages',
+    'languages settings' => 'languages settings',
+    'header' => 'new language',
+    'name' => 'name',
+    'language' => 'language',
+    'locales' => 'locales',
+    'locale' => 'locale',
+    'code' => 'code',
+    'flag' => 'flag',
+    'rtl' => 'right to left',
+    'ltr' => 'left to right ',
+    'direction' => 'direction',
+    'add new locale' => 'add new locale',
+    'add' => 'add language',
+    'edit' => 'edit language',
+    'update' => 'update language',
+    'delete' => 'delete language',
+    'restore' => 'restore language',
+    'trash' => 'trash language',
+    'translations' => 'translations',
+
+    // messages
+    'found' => 'this language already found',
+    'something went wrong' => 'something went wrong please try again later',
+    'language added' => 'language added successfully',
+    'delete_message' => 'are you sure to delete this language?',
+    'deleted_success_message' => 'language deleted successfully',
+    'deleted_error_message' => 'this language can\'t deleted',
+    'change_status_success_message' => 'language status updated successfuly',
+    'change_status_error_message' => 'something error when change language status',
+    'status_error_message' => 'languages module not support this status',
+    'no_language_error_message' => 'no language found please contact support',
+    'language_in_use_message' => 'this language is default or current',
+
+    'view-all' => 'view all',
+    'add-new' => 'add new',
+    '' => '',
+
+    'select language code' => 'Select language code',
+    'select language flag' => 'Select language flag',
+    '' => '',
+];
