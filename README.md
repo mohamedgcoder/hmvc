@@ -1,2 +1,2 @@
-# hmvc
+# HMVC
 HMVC Laravel Project
