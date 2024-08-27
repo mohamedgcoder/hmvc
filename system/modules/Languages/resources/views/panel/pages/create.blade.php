@@ -115,9 +115,9 @@
         function formatOption(option) {
             var image = option.id;
             if(image != undefined){
-                var optionWithImage = $('<span><img src="{{url("assets/global/flags")}}/'+image+'.png" class="img-flag" /> ' + option.text + '</span>');
+                var optionWithImage = $('<span><img src="{{url("assets/global/flags")}}/'+image.trim()+'.png" class="img-flag"/> ' + option.text + '</span>');
+                return optionWithImage;
             }
-            return optionWithImage;
         }
 
         $('.flags').select2({

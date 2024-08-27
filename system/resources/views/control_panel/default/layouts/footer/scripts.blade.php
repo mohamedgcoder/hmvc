@@ -30,7 +30,6 @@
         ];
         var page = "{{ url()->current() }}";
         var expirationTime = "{{ _settings('settings', 'expiration_logged_in') }}"; // in minute
-        console.log(idleTime);
         if (!ex.includes(page) && idleTime >= expirationTime) {
             window.location = "{{ route('admin.unlock')}}";
         }

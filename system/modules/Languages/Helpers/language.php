@@ -134,9 +134,9 @@ if (!function_exists('_get_all_languages')) {
     {
         $languages = [];
         try {
-            $path = _RD(). 'assets/global/data/languages/'.(($code != null)? $code : _current_Language());
+            $path = _system_path('assets/global/data/languages/'.(($code != null)? $code : _current_Language()));
             if(!File::exists($path)) {
-                $path = _RD(). 'assets/global/data/languages/'._default_lang();
+                $path = _system_path('assets/global/data/languages/'._default_lang());
             }
             $file = $path.'/language.json';
             $languages = json_decode(file_get_contents($file), true);
@@ -182,9 +182,9 @@ if (!function_exists('_get_countries')) {
     {
         $countries = [];
         try {
-            $path = _RD(). 'assets/global/data/countries/'._current_Language();
+            $path = _system_path('assets/global/data/countries/'._current_Language());
             if(!File::exists($path)) {
-                $path = _RD(). 'assets/global/data/countries/'._default_lang();
+                $path = _system_path('assets/global/data/countries/'._default_lang());
             }
             $file = $path.'/country.json';
             $countries = json_decode(file_get_contents($file), true);

@@ -106,6 +106,22 @@ if (!function_exists('_assets')) {
 
 /*
 |--------------------------------------------------------------------------
+| System directory path
+|--------------------------------------------------------------------------
+|
+| return path of directory for system.
+|
+ */
+if (!function_exists('_system_path')) {
+    function _system_path(string $dir = null)
+    {
+        $path =  ( _RD(). (Str::of(_RD())->isMatch('/'.basename(dirname(__DIR__, 3)).'/')) ? $dir : basename(dirname(__DIR__, 3)).'/'. $dir);
+        return $path;
+    }
+};
+
+/*
+|--------------------------------------------------------------------------
 | System upload directory path
 |--------------------------------------------------------------------------
 |
@@ -129,7 +145,7 @@ if (!function_exists('_upload_path')) {
             $imagesPath = "uploads/images/";
         }
 
-        return ($type == null)? ( _RD(). (Str::of(_RD())->isMatch('/'.basename(dirname(__DIR__, 3)).'/')) ? $imagesPath : basename(dirname(__DIR__, 3)).'/'. $imagesPath) : url($imagesPath);
+        return ($type == null)? _system_path($imagesPath) : url($imagesPath);
     }
 };
 
