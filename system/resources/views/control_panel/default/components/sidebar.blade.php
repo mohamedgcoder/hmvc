@@ -46,3 +46,4 @@
     <!-- /sidebar content -->
 
 </div>
+{{ session()->forget('_sidebar_main_resized') }}

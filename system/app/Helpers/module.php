@@ -14,7 +14,11 @@ use Illuminate\Support\Str;
 if (!function_exists('_getModulePath')) {
     function _getModulePath(string $moduleName)
     {
-        return app_path('Modules' . _DS() . $moduleName . _DS());
+        if(file_exists(app_path('Modules' . _DS() . $moduleName . _DS()))){
+            return app_path('Modules' . _DS() . $moduleName . _DS());
+        }else{
+            return base_path(_DS(). 'modules'. _DS() . $moduleName . _DS());
+        }
     }
 }
 

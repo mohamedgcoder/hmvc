@@ -74,7 +74,7 @@ $auth_config = [
     'providers' => [
         'admins' => [
             'driver' => 'eloquent',
-            'model' => Admins\Models\Admin::class,
+            'model' => Module\Admins\Models\Admin::class,
         ],
         // 'users' => [
         //     'driver' => 'eloquent',

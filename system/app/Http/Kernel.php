@@ -22,7 +22,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \Languages\Http\Middleware\Localization::class,
+        \Module\Languages\Http\Middleware\Localization::class,
     ];
 
     /**
@@ -69,5 +69,9 @@ class Kernel extends HttpKernel
         'api.auth' => \App\Http\Middleware\ApiAuthenticate::class,
         'tenant' => \Tenancy\Http\Middleware\TenantsMiddleware::class,
         'checkRequest' => \App\Http\Middleware\chekRequestIfEmpty::class,
+    ];
+
+    protected $commands = [
+        //
     ];
 }
