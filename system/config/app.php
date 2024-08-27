@@ -184,12 +184,12 @@ return [
          */
 
         // Core modules
-        Permissions\Providers\ModuleServiceProvider::class,
-        Settings\Providers\ModuleServiceProvider::class,
-        General\Providers\ModuleServiceProvider::class,
-        Languages\Providers\ModuleServiceProvider::class,
-        Admins\Providers\ModuleServiceProvider::class,
-        Contacts\Providers\ModuleServiceProvider::class,
+        Module\Permissions\Providers\ModuleServiceProvider::class,
+        Module\General\Providers\ModuleServiceProvider::class,
+        Module\Languages\Providers\ModuleServiceProvider::class,
+        Module\Admins\Providers\ModuleServiceProvider::class,
+        Module\Settings\Providers\ModuleServiceProvider::class,
+        Module\Contacts\Providers\ModuleServiceProvider::class,
 
     ])->toArray(),
 

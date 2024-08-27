@@ -31,22 +31,17 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Module\\": "modules/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/",
-            "Permissions\\": "app/Modules/Permissions",
-            "Settings\\": "app/Modules/Settings",
-            "General\\": "app/Modules/General",
-            "Languages\\": "app/Modules/Languages",
-            "Admins\\": "app/Modules/Admins",
-            "Contacts\\": "app/Modules/Contacts"
+            "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
             "app/Helpers/app.php",
             "app/Helpers/module.php",
             "app/Helpers/theme.php",
-            "app/Modules/Settings/Helpers/settings.php",
-            "app/Modules/Languages/Helpers/language.php",
-            "app/Modules/Admins/Helpers/admin.php"
+            "modules/Admins/Helpers/admin.php",
+            "modules/Settings/Helpers/settings.php",
+            "modules/Languages/Helpers/language.php"
         ]
     },
     "autoload-dev": {

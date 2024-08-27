@@ -126,10 +126,10 @@ if (!function_exists('_upload_path')) {
 
             $imagesPath = "uploads/tenants/{$folder}/";
         }else{
-            $imagesPath = 'uploads/images/';
+            $imagesPath = "uploads/images/";
         }
 
-        return ($type == null)? _RD(). $imagesPath : url($imagesPath);
+        return ($type == null)? ( _RD(). (Str::of(_RD())->isMatch('/'.basename(dirname(__DIR__, 3)).'/')) ? $imagesPath : basename(dirname(__DIR__, 3)).'/'. $imagesPath) : url($imagesPath);
     }
 };
 

@@ -10,7 +10,9 @@
         @foreach ($options as $group => $opt)
         <optgroup label="{{ Str::title($group) }}">
             @foreach ($opt as $k => $option)
-            <option value="{{$k}}" @if(isset($selected) && $selected != null && !empty($selected) && $selected == $k)selected @endif>
+            <option
+            value="@if(isset($value) && $value == false) {{$option}} @else {{$k}} @endif"
+            @if(isset($selected) && $selected != null && !empty($selected) && $selected == ((isset($value) && $value == false) ? $option : $k))selected @endif>
                 {{Str::title($option)}}
             </option>
             @endforeach
@@ -18,7 +20,9 @@
         @endforeach
     @else
         @foreach ($options as $k => $option)
-        <option value="{{$k}}" @if(isset($selected) && $selected != null && !empty($selected) && $selected == $k)selected @endif>
+        <option
+        value="@if(isset($value) && $value == false && !empty($value)) {{$option}} @else {{$k}} @endif"
+        @if(isset($selected) && $selected != null && !empty($selected) && $selected == ((isset($value) && $value == false) ? $option : $k))selected @endif>
             {{Str::title($option)}}
         </option>
         @endforeach
