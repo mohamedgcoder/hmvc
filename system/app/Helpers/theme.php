@@ -115,8 +115,15 @@ if (!function_exists('_assets')) {
 if (!function_exists('_system_path')) {
     function _system_path(string $dir = null)
     {
-        $path =  ( _RD(). (Str::of(_RD())->isMatch('/'.basename(dirname(__DIR__, 3)).'/')) ? $dir : basename(dirname(__DIR__, 3)).'/'. $dir);
-        return $path;
+        try {
+            if(Str::of(_RD())->isMatch('/'.basename(dirname(__DIR__, 3)).'/')){
+                return _RD().$dir;
+            }else{
+                return _RD().basename(dirname(__DIR__, 3)).'/'. $dir;
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 };
 

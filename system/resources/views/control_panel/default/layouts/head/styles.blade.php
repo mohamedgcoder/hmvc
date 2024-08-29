@@ -1,5 +1,6 @@
         <!-- Global stylesheets -->
         <link id="theme-mode" href="{{ _assets('css/'._dir().'/all.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ _assets('css/app.min.css') }}" rel="stylesheet" type="text/css">
         <!-- /global stylesheets -->
 
         <style>

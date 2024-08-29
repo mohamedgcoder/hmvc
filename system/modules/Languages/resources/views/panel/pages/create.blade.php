@@ -31,8 +31,8 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <fieldset>
-                                <div class="form-group">
-                                    <label>{{ Str::title(_trans($namespace, 'language')) }}:</label>
+                                <div class="form-group required">
+                                    <label class="control-label">{{ Str::title(_trans($namespace, 'language')) }}:</label>
                                     @include(_current_theme('components.fields.select'), [
                                         "name" => "code",
                                         "placeholder" => Str::title(_trans($namespace, 'select language code')),
@@ -42,8 +42,8 @@
                                     ])
                                 </div>
 
-                                <div class="form-group">
-                                    <label>{{ Str::title(_trans($namespace, 'flag')) }}:</label>
+                                <div class="form-group required">
+                                    <label class="control-label">{{ Str::title(_trans($namespace, 'flag')) }}:</label>
                                     @include(_current_theme('components.fields.select'), [
                                         "name" => "flag",
                                         "options" => _get_countries(),
@@ -57,7 +57,7 @@
                         <div class="col-lg-6">
                             <fieldset>
                                 <div class="form-group">
-                                    <label>{{ Str::title(_trans($namespace, 'direction')) }}:</label>
+                                    <label class="control-label">{{ Str::title(_trans($namespace, 'direction')) }}:</label>
                                     @include(_current_theme('components.fields.select'), [
                                         "name" => "direction",
                                         "options" => [
@@ -68,18 +68,39 @@
                                     ])
                                 </div>
 
-                                <div class="form-group">
-                                    <label>{{ Str::title(__('index.status')) }}:</label>
-                                    @include(_current_theme('components.fields.select'), [
-                                        "name" => "status",
-                                        "options" => [
-                                            "2" => Str::title(__('index.active')),
-                                            "3" => Str::title(__('index.inactive')),
-                                        ],
-                                        "selected" => "3",
-                                        "class" => "",
-                                    ])
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="control-label">{{ Str::title(__('index.status')) }}:</label>
+                                            @include(_current_theme('components.fields.select'), [
+                                                "name" => "status",
+                                                "options" => [
+                                                    "2" => Str::title(__('index.active')),
+                                                    "3" => Str::title(__('index.inactive')),
+                                                ],
+                                                "selected" => "3",
+                                                "class" => "",
+                                            ])
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class="control-label">{{ Str::title(__('index.default')) }}:</label>
+                                            @include(_current_theme('components.fields.select'), [
+                                                "name" => "default",
+                                                "options" => [
+                                                    "2" => Str::title(__('index.active')),
+                                                    "3" => Str::title(__('index.inactive')),
+                                                ],
+                                                "selected" => "3",
+                                                "class" => "",
+                                            ])
+                                        </div>
+                                    </div>
                                 </div>
+
+
                             </fieldset>
                         </div>
                     </div>
