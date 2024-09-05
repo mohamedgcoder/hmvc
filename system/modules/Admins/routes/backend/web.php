@@ -23,7 +23,7 @@ $moduleName = basename(dirname(__DIR__, 2));
 |
 */
 // Global Prefix
-Route::group(['prefix' => _prefix('panel'), 'as' => 'admin.'], function () use($moduleName){
+Route::group(['prefix' => _prefix('panel'), 'as' => 'admins.'], function () use($moduleName){
 
     // Route for Authentication
     Route::middleware(_moduleMiddleware($moduleName))->group(function (){

@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
     public function index(): View
     {
-        _active_menu(['dashboard']);
+        _active_menu([$this->namespace.'-panel']);
         session()->flash('_sidebar_main_resized', 'sidebar-main-resized');
         $title = _trans($this->namespace, $this->module.'.title');
 

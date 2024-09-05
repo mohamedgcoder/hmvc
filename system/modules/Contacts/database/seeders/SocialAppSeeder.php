@@ -3,7 +3,7 @@
 namespace module\Contacts\Database\Seeders;
 
 use Module\Contacts\Models\SocialApp;
-use Module\Contacts\Data\ContactsData;
+use Module\Contacts\Data\Data;
 use Illuminate\Database\Seeder;
 
 class SocialAppSeeder extends Seeder
@@ -12,7 +12,7 @@ class SocialAppSeeder extends Seeder
 
     public function __construct()
     {
-        $this->SocialMediaApps = ContactsData::getSocialMediaApps();
+        $this->SocialMediaApps = Data::getSocialMediaApps();
     }
 
     /**

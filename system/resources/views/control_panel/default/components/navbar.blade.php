@@ -6,7 +6,7 @@
     </div>
 
     <div class="navbar-brand text-center text-lg-left">
-        <a href="{{ route('admin.panel') }}" class="d-inline-block">
+        <a href="{{ route('admins.panel') }}" class="d-inline-block">
             <img src="{{ _logo(null, 'light') }}" class="d-none d-sm-block" alt="{{ implode(' ', Str::ucsplit(_settings('settings', 'name'))) }}">
             <img src="{{ _logo('icon', 'light') }}" class="d-sm-none" alt="{{ implode(' ', Str::ucsplit(_settings('settings', 'name'))) }}">
         </a>
@@ -33,7 +33,7 @@
                         {{ Str::title(_trans('admins', 'front.view')) }}
                     </a>
 					<div class="dropdown-divider"></div>
-					<a href="{{ route('admin.profile') }}#update" class="dropdown-item">
+					<a href="{{ route('admins.profile') }}#update" class="dropdown-item">
                         <i class="fas fa-id-card-alt"></i>
                         {{ Str::title(_trans('admins', 'profile.my_profile')) }}
                     </a>
@@ -43,7 +43,7 @@
                     </a>
                     @include(_current_theme('components.switch_dark_mode'))
 					<div class="dropdown-divider"></div>
-					<a href="{{ route('admin.logout') }}" class="dropdown-item">
+					<a href="{{ route('admins.logout') }}" class="dropdown-item">
                         <i class="icon-switch2"></i>
                         {{ Str::title(_trans('admins', 'auth.logout')) }}
                     </a>

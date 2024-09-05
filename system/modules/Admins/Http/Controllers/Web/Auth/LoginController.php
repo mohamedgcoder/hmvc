@@ -59,13 +59,13 @@ class LoginController extends Controller
                 );
             }
 
-            return redirect(route('admin.panel'));
+            return redirect(route('admins.panel'));
         } else {
             session()->put('alert', ['type' => 'alert-danger', 'dismissible' => 'alert-dismissible', 'message' => _trans($this->namespace, 'auth.message.failed')]);
         }
 
         End:
-        return redirect(route('admin.login'));
+        return redirect(route('admins.login'));
     }
 
     public function lockAccount(Request $request): View
@@ -103,7 +103,7 @@ class LoginController extends Controller
 
         // session()->put('locale', $locale, _settings('general', 'cache_remember_time'));
 
-        return response(redirect(route('admin.login')));
+        return response(redirect(route('admins.login')));
     }
 
     public static function checkAdminrecord($field, $value): bool

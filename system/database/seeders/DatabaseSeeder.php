@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Module\Settings\Models\Setting;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
             \Module\General\Database\Seeders\GendersSeeder::class,
             \Module\General\Database\Seeders\ConnectionTypesSeeder::class,
             \Module\Languages\Database\Seeders\DataSeeder::class,
+            \Module\Menus\Database\Seeders\DataSeeder::class,
             \Module\Admins\Database\Seeders\DataSeeder::class,
             \Module\Settings\Database\Seeders\DataSeeder::class,
             \Module\Contacts\Database\Seeders\EmailsSeeder::class,

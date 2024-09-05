@@ -207,38 +207,50 @@ if (!function_exists('_auth')) {
 }
 
 
-// /*
-// |--------------------------------------------------------------------------
-// | generate cache name
-// |--------------------------------------------------------------------------
-// |
-// |
-// |
-//  */
-// if (!function_exists('_get_cache_name')) {
-//     function _get_cache_name(string $key, $language = null)
-//     {
-//         $language = $language == null ? _current_Language() : $language;
-//         return 'panel-data'.$key.'-'.$language.'-'.auth()->user()->code;
-//     }
-// }
+/*
+|--------------------------------------------------------------------------
+| generate cache name
+|--------------------------------------------------------------------------
+|
+|
+|
+ */
+if (!function_exists('_get_cache_name')) {
+    function _get_cache_name(string $key)
+    {
+        return _settings('settings', 'system_key').'-'.$key.'-'._current_Language().'-'.(Auth::check()? Auth::user()->code : '');
+    }
+}
 
-// /*
-// |--------------------------------------------------------------------------
-// | forget cache
-// |--------------------------------------------------------------------------
-// |
-// |
-// |
-//  */
-// if (!function_exists('_forget_cache')) {
-//     function _forget_cache(string $cache_name)
-//     {
-//         foreach (session('site_languages') as $language) {
-//             cache()->forget(_get_cache_name($cache_name, $language->code));
-//         }
-//     }
-// }
+/*
+|--------------------------------------------------------------------------
+| generate cache name
+|--------------------------------------------------------------------------
+|
+|
+|
+ */
+if (!function_exists('_cache_remember_time')) {
+    function _cache_remember_time()
+    {
+        return _settings('general', 'cache_remember_time');
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| forget cache
+|--------------------------------------------------------------------------
+|
+|
+|
+ */
+if (!function_exists('_forget_cache')) {
+    function _forget_cache(string $cache_name)
+    {
+        cache()->forget(_get_cache_name($cache_name));
+    }
+}
 
 /*
 |--------------------------------------------------------------------------

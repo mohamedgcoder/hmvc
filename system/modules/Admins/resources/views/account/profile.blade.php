@@ -207,7 +207,7 @@
             if(password == ''){
                 $('#set').prop("disabled", true);
             }else{
-                var url = "{{ Route('admin.check.password.old') }}";
+                var url = "{{ Route('admins.check.password.old') }}";
                 var passwordLength = "{{ _settings('admin', 'password_length')?: 6 }}";
                 var email = $('#email').val();
                 if(password.length >= passwordLength){

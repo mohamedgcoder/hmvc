@@ -27,7 +27,7 @@ class ContactsController extends Controller
         // if(!$this->checkPermission('view ' . $this->module, $title))
         //     return redirect(Route('panel'));
 
-        _active_menu([_modulelowerSingularName($this->namespace)]);
+        _active_menu([$this->namespace]);
 
         return view(_moduleName($this->namespace).'::panel.pages.index', ['namespace' => $this->namespace, 'module' => $this->module] , compact(['title']));
     }

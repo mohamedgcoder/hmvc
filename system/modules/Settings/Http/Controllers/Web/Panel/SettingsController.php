@@ -35,7 +35,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace) . '::index', ['namespace' => $this->namespace, 'module' => $this->module], compact(['title']));
     }
@@ -49,7 +49,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
         $settings = _settingTranslated('name');
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title', 'settings']));
@@ -64,7 +64,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title']));
     }
@@ -79,7 +79,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title']));
     }
@@ -93,7 +93,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
         $settings = _settingTranslated();
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title', 'settings']));
@@ -108,7 +108,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title']));
     }
@@ -122,7 +122,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title']));
     }
@@ -136,7 +136,7 @@ class SettingsController extends Controller
         //     return redirect(Route('panel'));
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), $this->module]);
+        _active_menu([$this->namespace, $this->module]);
 
         return view(_moduleName($this->namespace).'::panel.pages.'. $this->module , ['namespace' => $this->namespace] , compact(['title']));
     }

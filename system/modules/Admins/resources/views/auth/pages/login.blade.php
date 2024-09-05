@@ -6,7 +6,7 @@
 
 @section('content')
     <!-- Login card -->
-    <form class="login-form" action="{{ route('admin.signin') }}" method="post">
+    <form class="login-form" action="{{ route('admins.signin') }}" method="post">
         @if(request('redirect') != null)
             <input type="hidden" name="redirect" value="{{ request('redirect') }}"/>
             <input type="hidden" name="type" value="login"/>
@@ -49,7 +49,7 @@
                         <span class="custom-control-label">{{ Str::title(_trans($namespace, 'auth.remember')) }}</span>
                     </label> --}}
 
-                    <a href="{{ route('admin.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
+                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
                 </div>
 
                 @if(_settings('settings', 'expiration_logged_in') !== null && _settings('settings', 'expiration_logged_in') > 0)
@@ -109,7 +109,7 @@
             var email = $('#auth_email').val();
             var password = $('#auth_password').val();
             if(email != '' && reg.test(email) == true){
-                var url = "{{ Route('admin.check.email') }}";
+                var url = "{{ Route('admins.check.email') }}";
                 $.ajax({
                 url: url,
                 type: 'POST',

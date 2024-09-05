@@ -6,7 +6,7 @@
 @section('content')
 
     <!-- password recovery form -->
-    <form class="login-form form-validate" action="{{ route('admin.setNewPassword') }}" method="post">
+    <form class="login-form form-validate" action="{{ route('admins.setNewPassword') }}" method="post">
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="token" value="{{ $token }}">
         @csrf
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="{{ route('admin.login') }}" class="d-block text-center">{{ Str::title(_trans($namespace, 'auth.message.login')) }}</a>
+                    <a href="{{ route('admins.login') }}" class="d-block text-center">{{ Str::title(_trans($namespace, 'auth.message.login')) }}</a>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
             if(password == ''){
                 $('#auth_set').prop("disabled",true);
             }else{
-                var url = "{{ Route('admin.check.password.old') }}";
+                var url = "{{ Route('admins.check.password.old') }}";
                 var passwordLength = "{{ _settings('admin', 'password_length')?: 6 }}";
                 var email = $('#auth_email').val();
                 if(password.length >= passwordLength){

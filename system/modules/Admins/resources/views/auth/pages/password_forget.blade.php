@@ -6,7 +6,7 @@
 @section('content')
 
     <!-- forget password form -->
-    <form class="login-form" action="{{ route('admin.recoverPassword') }}" method="post">
+    <form class="login-form" action="{{ route('admins.recoverPassword') }}" method="post">
         @if(request('redirect') != null)
             <input type="hidden" name="redirect" value="{{ request('redirect') }}"/>
         @endif
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group">
-                    <a href="{{ route('admin.login') }}" class="d-block text-center">{{ Str::title(_trans($namespace, 'auth.message.login')) }}</a>
+                    <a href="{{ route('admins.login') }}" class="d-block text-center">{{ Str::title(_trans($namespace, 'auth.message.login')) }}</a>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             var reg = {{ _reg() }};
             var email = $('#auth_email').val();
             if(email != '' && reg.test(email) == true){
-                var url = "{{ Route('admin.check.email') }}";
+                var url = "{{ Route('admins.check.email') }}";
                 $.ajax({
                 url: url,
                 type: 'POST',

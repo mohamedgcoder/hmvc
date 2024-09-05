@@ -41,7 +41,8 @@
             "app/Helpers/theme.php",
             "modules/Admins/Helpers/admin.php",
             "modules/Settings/Helpers/settings.php",
-            "modules/Languages/Helpers/language.php"
+            "modules/Languages/Helpers/language.php",
+            "modules/Menus/Helpers/menu.php"
         ]
     },
     "autoload-dev": {

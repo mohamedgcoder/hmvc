@@ -31,7 +31,7 @@
         var page = "{{ url()->current() }}";
         var expirationTime = "{{ _settings('settings', 'expiration_logged_in') }}"; // in minute
         if (!ex.includes(page) && idleTime >= expirationTime) {
-            window.location = "{{ route('admin.unlock')}}";
+            window.location = "{{ route('admins.unlock')}}";
         }
     }
 

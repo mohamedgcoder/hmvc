@@ -50,7 +50,7 @@
 
 						<!-- Error content -->
 						<div class="text-center">
-							<a href="@if(_is_admin()) {{ route('admin.panel') }} @else {{ url('/') }} @endif" class="btn btn-primary">
+							<a href="@if(_is_admin()) {{ route('admins.panel') }} @else {{ url('/') }} @endif" class="btn btn-primary">
 								<i class="icon-home4 mr-2"></i>
 								{{ Str::title(__('errors.return_to_'.(_is_admin()?'dashboard':'site'))) }}
 							</a>

@@ -42,7 +42,7 @@ class LanguagesController extends Controller
         // if(!$this->checkPermission('view ' . $this->module, $title))
         //     return redirect(Route('panel'));
 
-        _active_menu([_modulelowerSingularName($this->namespace), 'all-'._modulelowerSingularName($this->namespace)]);
+        _active_menu([$this->namespace, 'locales']);
         return view(_moduleName($this->namespace).'::panel.pages.index' , ['namespace' => $this->namespace] , compact(['title']));
     }
 
@@ -79,7 +79,7 @@ class LanguagesController extends Controller
         //     return back();
         // }
 
-        _active_menu([_modulelowerSingularName($this->namespace), 'add-new-'._modulelowerSingularName($this->namespace)]);
+        _active_menu([$this->namespace, 'add-new-'._modulelowerSingularName($this->namespace)]);
 
         return view(_moduleName($this->namespace).'::panel.pages.create' , ['namespace' => $this->namespace] , compact(['title']));
     }
@@ -182,13 +182,13 @@ class LanguagesController extends Controller
             Status::with('statusTrans')->whereIn('id', [2, 3])->get()
         )->resolve();
 
-        $country_flags = CountryResource::collection(
-            Country::with(['translations' => function($query) {
-                $query->CurrentAndDefaultLanguage();
-            }])
-            ->allStatus()
-            ->get()
-        )->resolve();
+        // $country_flags = CountryResource::collection(
+        //     Country::with(['translations' => function($query) {
+        //         $query->CurrentAndDefaultLanguage();
+        //     }])
+        //     ->allStatus()
+        //     ->get()
+        // )->resolve();
 
         $langPath = 'lang/' . ((File::exists(resource_path('lang/'.$data['code'])))? $data['code'] : _default_lang()) ;
 

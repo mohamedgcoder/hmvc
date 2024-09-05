@@ -3,6 +3,8 @@
 namespace Module\permissions\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Module\Permissions\Data\Data;
+use Module\Menus\database\seeders\Menus;
 use Module\Permissions\Database\Seeders\Permissions as SeedersPermissions;
 
 class PermissionsSeeder extends Seeder
@@ -10,6 +12,7 @@ class PermissionsSeeder extends Seeder
     protected $Role_names;
     protected $Permissions;
     protected $guard_name;
+    protected array $menu;
 
     public function __construct()
     {
@@ -42,6 +45,8 @@ class PermissionsSeeder extends Seeder
         $this->Permissions = $Permissions;
 
         $this->guard_name = $guard_name;
+
+        $this->menu = Data::getMenu();
     }
 
     /**
@@ -59,5 +64,20 @@ class PermissionsSeeder extends Seeder
 
         // create Permissions
         new SeedersPermissions($data);
+
+        if(!empty($this->menu)){
+            // set setting values
+            $this->setMenu();
+        }
+    }
+
+    public function setMenu(): bool
+    {
+        try {
+            new Menus($this->menu);
+            return true;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }

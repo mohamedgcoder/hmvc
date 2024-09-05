@@ -62,7 +62,7 @@ class ResetPasswordController extends Controller implements ShouldQueue
             $mail = Mail::later(now()->addSeconds(_settings('mail', 'queue_delay')), new AdminResetPassword(['data' => $admin, 'namespace' => $this->namespace, 'token' => $token]));
 
             session()->put('alert', ['type' => 'alert-success', 'dismissible' => 'alert-dismissible', 'message' => _trans($this->namespace, 'auth.message.reset_mail_sent')]);
-            return redirect(route('admin.login'));
+            return redirect(route('admins.login'));
         }
 
         session()->put('alert', ['type' => 'alert-danger', 'dismissible' => 'alert-dismissible', 'message' =>  _trans($this->namespace, 'auth.message.email-notfound')]);
@@ -74,7 +74,7 @@ class ResetPasswordController extends Controller implements ShouldQueue
     public function resetPassword(Request $request)
     {
         if(!$request->has('token') && $request->token == null)
-            return redirect(route('admin.login'));
+            return redirect(route('admins.login'));
 
         try {
             $check_token = $this->getLastResetToken($request->token);
@@ -86,7 +86,7 @@ class ResetPasswordController extends Controller implements ShouldQueue
                 return view(_moduleName($this->namespace).'::' . $this->module.'.pages.password_reset' , ['namespace' => $this->namespace, 'module' => $this->module] , compact(['title', 'token', 'email']));
             }else{
                 session()->put('alert', ['type' => 'alert-danger', 'dismissible' => 'alert-dismissible', 'message' =>  _trans($this->namespace, 'auth.message.session_reset_password_expired')]);
-                return redirect(route('admin.forgetPassword'));
+                return redirect(route('admins.forgetPassword'));
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -118,7 +118,7 @@ class ResetPasswordController extends Controller implements ShouldQueue
             if(Admin::where('email', $check_token->email)
                 ->update(['password' => Hash::make($request->password)])){
                 DB::table('password_resets')->where('email', $request->email)->delete();
-                return redirect(route('admin.login'));
+                return redirect(route('admins.login'));
             }
         }
 

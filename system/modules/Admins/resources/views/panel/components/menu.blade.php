@@ -7,7 +7,7 @@
 
 {{-- admin dashboard --}}
 <li class="nav-item">
-    <a href="{{ route('admin.panel') }}" class="nav-link @if(session('menu-item')[0] == 'dashboard')active @endif">
+    <a href="{{ route('admins.panel') }}" class="nav-link @if(session('menu-item')[0] == 'dashboard')active @endif">
         <i class="fas fa-tachometer-alt" title="{{ _trans($namespace, 'dashboard.title') }}"></i>
         <span>
             {{ Str::title(_trans($namespace, 'dashboard.title')) }}

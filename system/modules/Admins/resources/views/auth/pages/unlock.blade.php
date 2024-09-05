@@ -6,7 +6,7 @@
 @section('content')
 
     <!-- unlock form -->
-    <form class="login-form" action="{{ route('admin.signin') }}" method="post">
+    <form class="login-form" action="{{ route('admins.signin') }}" method="post">
         @if(request('redirect') != null)
             <input type="hidden" name="redirect" value="{{ request('redirect') }}"/>
         @endif
@@ -47,7 +47,7 @@
                 ])
 
                 <div class="form-group d-flex align-items-center">
-                    <a href="{{ route('admin.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
+                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
                 </div>
 
                 @include(_current_theme('components.buttons.primary'), [

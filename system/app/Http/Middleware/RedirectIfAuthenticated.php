@@ -30,7 +30,7 @@ class RedirectIfAuthenticated
             if (in_array(Auth::user()->status, [1, 3, 4])){
                 session()->put('announcement', ['type' => 'alert-warning ', 'message' => Auth::user()->status_message]);
                 if(!in_array(url()->current(), [_url('panel', '/'), _url('panel', 'logout')]))
-                    return redirect(route('admin.panel'));
+                    return redirect(route('admins.panel'));
             }
 
             $authEx = [
@@ -41,10 +41,10 @@ class RedirectIfAuthenticated
             ];
 
             if (in_array(url()->current(), $authEx)) {
-                return redirect(route('admin.panel'));
+                return redirect(route('admins.panel'));
             }
         }else{
-            $route = _is_admin() ? 'admin.login' : '/';
+            $route = _is_admin() ? 'admins.login' : '/';
 
             if (in_array(url()->current(), [_url('panel', '/'), _url('panel', 'logout'), _url('panel', 'unlock')])) {
                 return redirect()->route($route);

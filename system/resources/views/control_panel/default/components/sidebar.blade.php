@@ -22,7 +22,7 @@
         <!-- User menu -->
         <div class="sidebar-section sidebar-user">
             <div class="sidebar-section-body d-flex justify-content-center">
-                <a href="{{ route('admin.profile') }}">
+                <a href="{{ route('admins.profile') }}">
                     <img src="{{ _get_image(auth()->user()->profile_pic, 'profile') }}" class="rounded-circle" alt="{{ auth()->user()->name }}">
                 </a>
 
@@ -38,7 +38,7 @@
 
         <!-- Main navigation -->
         <div class="sidebar-section">
-            @include(_current_theme('components.menu'))
+            @include(_current_theme('components.menu.index'))
         </div>
         <!-- /main navigation -->
 

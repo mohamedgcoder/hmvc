@@ -5,7 +5,7 @@ namespace Module\Contacts\Data;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 
-class ContactsData{
+class Data{
 
     public static function getSocialMediaApps()
     {
@@ -180,6 +180,75 @@ class ContactsData{
                     'key' => 'location',
                     'value' => null,
                     'translation' => false,
+                ],
+            ],
+        ];
+    }
+
+    public static function getMenu()
+    {
+        return [
+            [
+                // if new group will be array else will be id of group
+                'group' => [
+                    'name' => 6, // array of name or group id
+                    'module' => 'contacts',
+                    'type' => 'admin',
+                    'arrangement' => 0, // no arrangement if related to group id
+                ],
+                'items' => [
+                    [
+                        'url' => null,
+                        'name' => [
+                            'en' => 'contacts',
+                            'ar' => 'جهات الاتصال',
+                        ],
+                        'children' => [
+                            [
+                                'url' => 'emails',
+                                'children' => null,
+                                'icon' => 'far fa-envelope',
+                                'name' => [
+                                    'en' => 'emails',
+                                    'ar' => 'الفبريد الإلكترونى',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'phones',
+                                'children' => null,
+                                'icon' => 'fas fa-mobile',
+                                'name' => [
+                                    'en' => 'phones',
+                                    'ar' => 'أرقام الهواتف',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                        ],
+                        'icon' => 'fas fa-address-book',
+                        'arrangement' => 4,
+                    ]
+                ],
+            ],
+            [
+                'group' => [
+                    'name' => 1,
+                    'module' => 'contacts',
+                    'type' => 'admin',
+                    'arrangement' => 3,
+                ],
+                'items' => [
+                    [
+                        'url' => 'contacts',
+                        'name' => [
+                            'en' => 'contacts',
+                            'ar' => 'إعدادات التواصل',
+                        ],
+                        'children' => null,
+                        'parent' => 10,
+                        'icon' => 'fas fa-address-book',
+                        'arrangement' => 3,
+                    ]
                 ],
             ],
         ];

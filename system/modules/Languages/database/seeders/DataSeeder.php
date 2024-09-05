@@ -2,24 +2,27 @@
 
 namespace module\languages\Database\Seeders;
 
-use Module\Languages\Models\Language;
+use Module\Languages\Data\Data;
 use Illuminate\Database\Seeder;
-use Module\Languages\Data\LanguagesData;
+use Module\Languages\Models\Language;
+use Module\Menus\Database\Seeders\Menus;
 use Module\Languages\Models\Translations;
 use Module\Settings\Database\Seeders\Settings;
 
 class DataSeeder extends Seeder
 {
-    protected $Languages;
-    protected $Translations;
+    protected array $menu;
+    protected array $Plugin;
+    protected array $Languages;
+    protected array $Translations;
     protected array $Settings;
-    protected $Plugin;
 
     public function __construct()
     {
-        $this->Languages = LanguagesData::getLanguages();
-        $this->Translations = LanguagesData::getTranslations();
-        $this->Settings = LanguagesData::getSettings();
+        $this->Languages = Data::getLanguages();
+        $this->Translations = Data::getTranslations();
+        $this->Settings = Data::getSettings();
+        $this->menu = Data::getMenu();
     }
 
     /**
@@ -49,17 +52,32 @@ class DataSeeder extends Seeder
             }
         }
 
-        // set seeting values
-        $this->setSettings();
+        if(!empty($this->Settings)){
+            // set setting values
+            $this->setSettings();
+        }
+
+        if(!empty($this->menu)){
+            // set setting values
+            $this->setMenu();
+        }
     }
 
     public function setSettings(): bool
     {
         try {
-            if(!empty($this->Settings)){
-                new Settings($this->Settings);
-                return true;
-            }
+            new Settings($this->Settings);
+            return true;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function setMenu(): bool
+    {
+        try {
+            new Menus($this->menu);
+            return true;
         } catch (\Throwable $th) {
             throw $th;
         }

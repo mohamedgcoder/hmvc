@@ -29,7 +29,7 @@ class AdminsController extends Controller
     public function index()
     {
         $title = _trans($this->namespace, 'title');
-        _active_menu([$this->module, 'all-'.$this->module]);
+        _active_menu([$this->namespace.'-index']);
 
         // if(!$this->checkPermission('view ' . $this->module, $title))
         //     return redirect(Route('panel'));

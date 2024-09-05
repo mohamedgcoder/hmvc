@@ -30,7 +30,9 @@ if(_moduleHasRoute($moduleName)){
             Route::middleware(_moduleMiddleware($moduleName))->group(function() use($moduleName){
 
                 Route::controller(ContactsController::class)->group(function () use($moduleName){
-                    Route::get('/', 'index')->name('index');
+                    Route::get('emails', 'index')->name('emails');
+                    Route::get('phones', 'index')->name('phones');
+                    Route::get('settings', 'index')->name('settings');
                     // Route::put('update-contacts', 'update')->name('update');
                 });
             });

@@ -52,9 +52,10 @@
     48 => 'Module\\Permissions\\Providers\\ModuleServiceProvider',
     49 => 'Module\\General\\Providers\\ModuleServiceProvider',
     50 => 'Module\\Languages\\Providers\\ModuleServiceProvider',
-    51 => 'Module\\Admins\\Providers\\ModuleServiceProvider',
-    52 => 'Module\\Settings\\Providers\\ModuleServiceProvider',
-    53 => 'Module\\Contacts\\Providers\\ModuleServiceProvider',
+    51 => 'Module\\Menus\\Providers\\ModuleServiceProvider',
+    52 => 'Module\\Admins\\Providers\\ModuleServiceProvider',
+    53 => 'Module\\Settings\\Providers\\ModuleServiceProvider',
+    54 => 'Module\\Contacts\\Providers\\ModuleServiceProvider',
   ),
   'eager' => 
   array (
@@ -95,9 +96,10 @@
     34 => 'Module\\Permissions\\Providers\\ModuleServiceProvider',
     35 => 'Module\\General\\Providers\\ModuleServiceProvider',
     36 => 'Module\\Languages\\Providers\\ModuleServiceProvider',
-    37 => 'Module\\Admins\\Providers\\ModuleServiceProvider',
-    38 => 'Module\\Settings\\Providers\\ModuleServiceProvider',
-    39 => 'Module\\Contacts\\Providers\\ModuleServiceProvider',
+    37 => 'Module\\Menus\\Providers\\ModuleServiceProvider',
+    38 => 'Module\\Admins\\Providers\\ModuleServiceProvider',
+    39 => 'Module\\Settings\\Providers\\ModuleServiceProvider',
+    40 => 'Module\\Contacts\\Providers\\ModuleServiceProvider',
   ),
   'deferred' => 
   array (

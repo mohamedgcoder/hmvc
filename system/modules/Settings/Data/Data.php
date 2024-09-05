@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Module\Settings\Http\Controllers\Web\Panel\SettingsController;
 
-class SettingsData{
+class Data{
 
     public static function getSettings()
     {
@@ -189,6 +189,114 @@ class SettingsData{
                     'key' => 'fcm_topic',
                     'value' => '',
                     'translation' => false,
+                ],
+            ],
+        ];
+    }
+
+    public static function getMenu()
+    {
+        return [
+            [
+                // if new group will be array else will be id of group
+                'group' => [
+                    'name' => 1, // array of name or group id
+                    'module' => 'settings',
+                    'type' => 'admin',
+                    'arrangement' => 0, // no arrangement if related to group id
+                ],
+                'items' => [
+                    [
+                        'url' => null,
+                        'name' => [
+                            'en' => 'settings',
+                            'ar' => 'الإعدادات',
+                        ],
+                        'children' => [
+                            [
+                                'url' => 'identity',
+                                'children' => null,
+                                'icon' => 'fas fa-fingerprint',
+                                'name' => [
+                                    'en' => 'identity',
+                                    'ar' => 'الهوية',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'appearance',
+                                'children' => null,
+                                'icon' => 'fas fa-theater-masks',
+                                'name' => [
+                                    'en' => 'appearance',
+                                    'ar' => 'المظهر العام',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'system',
+                                'children' => null,
+                                'icon' => 'fas fa-wrench',
+                                'name' => [
+                                    'en' => 'system',
+                                    'ar' => 'معلومات النظام',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'seo',
+                                'children' => null,
+                                'icon' => 'fab fa-searchengin',
+                                'name' => [
+                                    'en' => 'seo',
+                                    'ar' => 'محركات البحث',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'social',
+                                'children' => null,
+                                'icon' => 'fas fa-share-alt',
+                                'name' => [
+                                    'en' => 'social',
+                                    'ar' => 'التواصل الاجتماعي',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'security',
+                                'children' => null,
+                                'icon' => 'fas fa-key',
+                                'name' => [
+                                    'en' => 'security',
+                                    'ar' => 'الحماية',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            [
+                                'url' => 'integrations',
+                                'children' => null,
+                                'icon' => 'fas fa-link',
+                                'name' => [
+                                    'en' => 'integrations',
+                                    'ar' => 'الربط الخارجى',
+                                ],
+                                'arrangement' => 1,
+                            ],
+                            // [
+                            //     'url' => 'contacts',
+                            //     'children' => null,
+                            //     'icon' => 'fas fa-address-book',
+                            //     'name' => [
+                            //         'en' => 'contacts',
+                            //         'ar' => 'التواصل',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                        ],
+                        'icon' => 'fas fa-cogs',
+                        'arrangement' => 1,
+                    ],
                 ],
             ],
         ];

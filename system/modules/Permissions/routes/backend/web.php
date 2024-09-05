@@ -17,15 +17,15 @@ $moduleName = basename(dirname(__DIR__, 2));
 */
 
 if(_moduleHasRoute($moduleName)){
-    Route::namespace(_moduleNamespace($moduleName))->prefix(_prefix('panel'))->group(function() use($moduleName){
-        Route::prefix(_modulePrefix($moduleName))->group(function() use($moduleName){
+    Route::group(['prefix' => _prefix('panel', _modulePrefix($moduleName)), 'as' => _modulePrefix($moduleName).'.'], function() use($moduleName){
+        //
+        Route::middleware(_moduleMiddleware($moduleName, "auth"))->group(function () use($moduleName){
 
-            //
-            Route::middleware(_moduleMiddleware($moduleName))->group(function() {
-
-                Route::get('/', [PermissionsController::class, 'index'])->name('permissions.index');
-                //
+            Route::controller(PermissionsController::class)->group(function () use($moduleName){
+                Route::get('/', 'index')->name('index');
+                Route::get('roles', 'show')->name('roles');
             });
+
         });
     });
 }

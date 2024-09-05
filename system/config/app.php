@@ -187,6 +187,7 @@ return [
         Module\Permissions\Providers\ModuleServiceProvider::class,
         Module\General\Providers\ModuleServiceProvider::class,
         Module\Languages\Providers\ModuleServiceProvider::class,
+        Module\Menus\Providers\ModuleServiceProvider::class,
         Module\Admins\Providers\ModuleServiceProvider::class,
         Module\Settings\Providers\ModuleServiceProvider::class,
         Module\Contacts\Providers\ModuleServiceProvider::class,

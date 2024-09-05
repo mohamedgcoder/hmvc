@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $title = _trans($this->namespace, $this->module.'.title');
 
         session()->flash('_sidebar_main_resized', '');
-        _active_menu(['dashboard']);
+        _active_menu([$this->namespace.'-panel']);
 
         return view(_moduleName($this->namespace).'::account.'. $this->module , ['namespace' => $this->namespace, 'module' => $this->module] , compact(['title']));
     }
