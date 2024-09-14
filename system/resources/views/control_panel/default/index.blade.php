@@ -4,6 +4,7 @@
     </head>
 
     <body>
+        @include(_current_theme('components.loading'))
         <!-- Main navbar -->
         @include(_current_theme('components.navbar'))
 	    <!-- /main navbar -->

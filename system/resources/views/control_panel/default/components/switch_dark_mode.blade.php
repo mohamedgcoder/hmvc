@@ -1,6 +1,5 @@
-<a class="dropdown-item">
-    <i class="fas fa-sun fa-md opacity-80"></i>
-    {{ Str::title(_trans('settings', 'general.dark_mode')) }}
+<a class="dropdown-item text-capitalize">
+    <i class="fas fa-sun fa-md opacity-80"></i>{{_trans('settings', 'general.dark_mode')}}
     <label class="custom-control custom-switch ml-auto" data-bs-popup="tooltip" data-bs-placement="right" data-bs-original-title="{{ Str::title(_trans('settings', 'general.dark_mode')) }}">
         <input id="theme_mode" type="checkbox" class="custom-control-input">
         <span class="custom-control-label"></span>

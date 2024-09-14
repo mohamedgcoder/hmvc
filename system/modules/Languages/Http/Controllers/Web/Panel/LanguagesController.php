@@ -37,13 +37,14 @@ class LanguagesController extends Controller
      */
     public function index()
     {
-        $title = _trans($this->namespace, 'title');
+        $this->module = 'locales';
+        $title = _trans($this->namespace, $this->module);
 
         // if(!$this->checkPermission('view ' . $this->module, $title))
         //     return redirect(Route('panel'));
 
         _active_menu([$this->namespace, 'locales']);
-        return view(_moduleName($this->namespace).'::panel.pages.index' , ['namespace' => $this->namespace] , compact(['title']));
+        return view(_moduleName($this->namespace).'::panel.pages.'.$this->module.'.index' , ['namespace' => $this->namespace, 'title' => $title] , compact([]));
     }
 
     public function create()
@@ -157,6 +158,7 @@ class LanguagesController extends Controller
         }
 
         End:
+        _forget_cache('languages');
         return back();
     }
 
@@ -197,6 +199,7 @@ class LanguagesController extends Controller
         $translate_files = $this->getTranslationFiles($langPath);
 
         _active_menu([$this->module]);
+        _forget_cache('languages');
 
         return view(_moduleName($this->namespace).'::edit',
         ['namespace' => $this->namespace,'module' => $this->module],
@@ -205,6 +208,7 @@ class LanguagesController extends Controller
 
     public function update(Request $request, $id)
     {
+        _forget_cache('languages');
         dd($request->all());
     }
 
@@ -229,11 +233,13 @@ class LanguagesController extends Controller
         session()->put('alert', ['type' => 'alert-danger', 'dismissible' => 'alert-dismissible', 'message' => _trans($this->namespace, 'deleted_error_message')]);
 
         End:
+        _forget_cache('languages');
         return back();
     }
 
     public function restore($id)
     {
+        _forget_cache('languages');
         //
     }
 
@@ -267,12 +273,20 @@ class LanguagesController extends Controller
         session()->put('message', ['type' => 'alert-success', 'messages' => [_trans($this->namespace, 'change_status_success_message')]]);
 
         End:
+        _forget_cache('languages');
         return back();
     }
 
     public function Translations()
     {
-        //
+        $this->module = 'translations';
+        $title = _trans($this->namespace, $this->module);
+
+        // if(!$this->checkPermission('view ' . $this->module, $title))
+        //     return redirect(Route('panel'));
+
+        _active_menu([$this->namespace, $this->module]);
+        return view(_moduleName($this->namespace).'::panel.pages.'.$this->module.'.index' , ['namespace' => $this->namespace] , compact(['title']));
     }
 
     public function updateTranslationsString(Language $language, Request $request)
@@ -284,6 +298,7 @@ class LanguagesController extends Controller
             fclose($file);
         }
 
+        _forget_cache('languages');
         return back();
     }
 
@@ -337,7 +352,8 @@ class LanguagesController extends Controller
     public function getAllAjax()
     {
         if(request()->ajax()){
-            return cache()->remember('panel-all-languages-'.Auth::user()->code, _settings('general', 'cache_remember_time'), function(){
+            $cacheName = _get_cache_name('languages');
+            return cache()->remember($cacheName, _settings('general', 'cache_remember_time'), function(){
                 $query = Language::
                 // with(['translations' => function($query) {
                 //     $query->CurrentAndDefaultLanguage();
@@ -350,25 +366,32 @@ class LanguagesController extends Controller
                 //         return $query->withTrashed();
                 //     }
                 // })
-                get();
+                orderBy('arrangement')
+                ->with('statusTrans')
+                ->get();
 
-                $data = LanguageResource::collection($query);
+                $data = LanguageResource::collection($query)->resolve();
                 return DataTables::of($data)
                     ->addIndexColumn()
+                    ->addColumn('select', function () {
+                        return '';
+                    })
                     ->addColumn('flag', function ($row) {
-                        return url('public/images/flags/' . $row['flag'] . '.svg');
+                        return url('assets/global/flags/' . $row['flag'] . '.png');
                     })
                     ->addColumn('code', function ($row) {
-                        $cu = ($row['code'] == _current_Language()) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">'.__('control_panel.global.current').'</span>' : '';
-                        $depanel = ($row['code'] == _default_lang('panel')) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">default panel</span>' : '';
-                        $defront = ($row['code'] == _default_lang('front')) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">default front</span>' : '';
+                        $cu = ($row['code'] == _current_Language()) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">'.__('index.current').'</span>' : '';
+                        $depanel = ($row['code'] == _default_lang('panel')) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">'.__('index.default panel').'</span>' : '';
+                        $defront = ($row['code'] == _default_lang('front')) ? '<span class="d-block font-weight-normal opacity-50" style="font-size: 10px;">'.__('index.default front').'</span>' : '';
                         return $row['code'] . $cu . $depanel . $defront;
                     })
-                    // ->addColumn('status', function ($row) {
-                    //     $status = '<span class="badge badge-' . $row['status']['color'] . '">' . $row['status']['name'] . '</span> ';
-                    //     $status .= ($row['deleted_at'] != null)? '<span class="badge badge-flat border-danger text-danger">'.__('control_panel.global.was_deleted').'</span>':'';
-                    //     return $status;
-                    // })
+                    ->addColumn('status', function ($row) {
+                        $status = '<span class="badge badge-' . $row['status']['color'] . '">' . $row['status']['name'] . '</span> ';
+                        $status .= ($row['actions']['deletedAt'] != null)? '<span class="badge badge-flat border-danger text-danger">'.__('index.was deleted').'</span>':'';
+                        $status .=  ($row['actions']['lastUpdatedBy'] != null)? '<span class="badge badge-flat border-warning text-warning ml-1">'.__('index.last action by').' '.$row['actions']['lastUpdatedBy'].'</span>':'';
+
+                        return $status;
+                    })
                     ->addColumn('action', function ($row){
                         $action = '
                             <div class="list-icons">
@@ -377,10 +400,12 @@ class LanguagesController extends Controller
                                         <i class="icon-menu9"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">';
-                            $action .=  '<a href="' . Route($this->module.'.edit', $row['id']) . '" class="dropdown-item text-capitalize"><i class="icon-pencil7"></i> ' . __('control_panel.global.edit') . '</a>';
-                            $action .=  '<a data-id="' . $row['id'] . '" id="deleteBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#deletemodal"><i class="icon-trash-alt"></i> ' . __('control_panel.global.delete') . '</a>';
-                            $action .=  '<a data-id="' . $row['id'] . '" id="restoreBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#restoremodal"><i class="icon-spinner11"></i> ' . __('control_panel.global.restore') . '</a>';
-                            $action .=  '<a data-id="' . $row['id'] . '" id="distroyBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#distroymodal"><i class="icon-blocked"></i> ' . __('control_panel.global.distroy') . '</a>';
+                            $action .=  '<a href="#" class="dropdown-item text-capitalize"><i class="icon-pencil7"></i> ' . __('index.edit') . '</a>';
+                            $action .=  '<a data-id="' . $row['id'] . '" id="deleteBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#deletemodal"><i class="icon-trash-alt"></i> ' . __('index.delete') . '</a>';
+                            if($row['actions']['deletedAt'] != null){
+                                $action .=  '<a data-id="' . $row['id'] . '" id="restoreBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#restoremodal"><i class="icon-spinner11"></i> ' . __('index.restore') . '</a>';
+                                $action .=  '<a data-id="' . $row['id'] . '" id="distroyBtn" class="dropdown-item text-capitalize" data-toggle="modal" data-target="#distroymodal"><i class="icon-blocked"></i> ' . __('index.distroy') . '</a>';
+                            }
                             $action .=  '</div>
                                 </div>
                             </div>';
@@ -390,7 +415,7 @@ class LanguagesController extends Controller
                     ->addColumn('group', function () {
                         return '';
                     })
-                    ->rawColumns(['flag', 'code', 'status', 'action', 'group'])
+                    ->rawColumns(['select', 'flag', 'code', 'status', 'action', 'group'])
                     ->make(true);
             });
         }else{

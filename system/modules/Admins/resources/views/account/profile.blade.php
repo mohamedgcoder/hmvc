@@ -7,7 +7,7 @@
 @section('title', _title_separation() . Str::title($title) . ' - ' . auth()->user()->name)
 
 @section('breadcrumb')
-    <span class="breadcrumb-item active">{{ Str::title($title) }}</span>
+    <span class="breadcrumb-item active text-capitalize">{{$title}}</span>
 @endsection()
 
 @section('content')
@@ -22,7 +22,7 @@
                     </a>
                 </div>
             </div>
-            <span class="font-weight-bold">{{ Str::ucfirst(auth()->user()->name) }}</span>
+            <span class="font-weight-bold text-capitalize">{{auth()->user()->name}}</span>
             <span class="text-muted">{{ auth()->user()->code }}</span>
             <span class="text-muted">{{ auth()->user()->email }}</span>
         </div>

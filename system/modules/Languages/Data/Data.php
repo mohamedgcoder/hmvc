@@ -53,11 +53,6 @@ class Data{
                     'value' => env('APP_LANGUAGE'),
                     'translation' => false,
                 ],
-                [
-                    'key' => 'default_based_on_device',
-                    'value' => false,
-                    'translation' => false,
-                ],
             ]
         ];
     }

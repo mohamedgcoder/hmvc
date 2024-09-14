@@ -29,19 +29,19 @@
                             <fieldset>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.transport')) }}:</label>
-                                    <input type="text" class="form-control" name="transport" value="{{_settings('settings', 'transport')}}">
+                                    <input type="text" class="form-control" name="transport" value="{{_settings('mail', 'transport')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.host')) }}:</label>
-                                    <input type="text" class="form-control" name="host" value="{{_settings('settings', 'host')}}">
+                                    <input type="text" class="form-control" name="host" value="{{_settings('mail', 'host')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.timeout')) }}:</label>
-                                    <input type="text" class="form-control" name="timeout" value="{{_settings('settings', 'timeout')}}">
+                                    <input type="text" class="form-control" name="timeout" value="{{_settings('mail', 'timeout')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.port')) }}:</label>
-                                    <input type="text" class="form-control" name="port" value="{{_settings('settings', 'port')}}">
+                                    <input type="text" class="form-control" name="port" value="{{_settings('mail', 'port')}}">
                                     <span class="form-text text-muted">ex 25 or 465 or 587 or 2525 for pop3.mailtrap.io - 1100 or 9950</span>
                                 </div>
                             </fieldset>
@@ -51,19 +51,19 @@
                             <fieldset>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.user_name')) }}:</label>
-                                    <input type="text" class="form-control" name="user_name" value="{{_settings('settings', 'user_name')}}">
+                                    <input type="text" class="form-control" name="user_name" value="{{_settings('mail', 'user_name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.password')) }}:</label>
-                                    <input type="text" class="form-control" name="password" value="{{_settings('settings', 'password')}}">
+                                    <input type="text" class="form-control" name="password" value="{{_settings('mail', 'password')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.queue_delay')) }}:</label>
-                                    <input type="text" class="form-control" name="queue_delay" value="{{_settings('settings', 'queue_delay')}}">
+                                    <input type="text" class="form-control" name="queue_delay" value="{{_settings('mail', 'queue_delay')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'integrations.encryption')) }}:</label>
-                                    <input type="text" class="form-control" name="encryption" value="{{_settings('settings', 'encryption')}}">
+                                    <input type="text" class="form-control" name="encryption" value="{{_settings('mail', 'encryption')}}">
                                 </div>
                             </fieldset>
                         </div>

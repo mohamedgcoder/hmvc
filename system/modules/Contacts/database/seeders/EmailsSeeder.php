@@ -9,12 +9,12 @@ use Module\Settings\Database\Seeders\Settings;
 
 class EmailsSeeder extends Seeder
 {
-    protected array $Settings;
+    protected array $settings;
     protected $menu;
 
     public function __construct()
     {
-        $this->Settings = Data::getMailSettings();
+        $this->settings = Data::getMailSettings();
         $this->menu = Data::getMenu();
     }
 
@@ -40,10 +40,11 @@ class EmailsSeeder extends Seeder
     public function setSettings(): bool
     {
         try {
-            if(!empty($this->Settings)){
-                new Settings($this->Settings);
-                return true;
+            if(!empty($this->settings)){
+                new Settings($this->settings);
             }
+
+            return true;
         } catch (\Throwable $th) {
             throw $th;
         }

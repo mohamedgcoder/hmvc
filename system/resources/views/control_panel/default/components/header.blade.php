@@ -19,7 +19,7 @@
     <div class="breadcrumb-line breadcrumb-line-light header-elements-lg-inline">
         <div class="d-flex">
             <div class="breadcrumb">
-                <a href="{{ route('admins.panel') }}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> {{ Str::ucfirst(_trans('Admins', 'dashboard.title')) }}</a>
+                <a href="{{ route('admins.panel') }}" class="breadcrumb-item text-capitalize"><i class="icon-home2 mr-2"></i> {{ _trans('Admins', 'dashboard.title') }}</a>
                 @yield('breadcrumb')
             </div>
 

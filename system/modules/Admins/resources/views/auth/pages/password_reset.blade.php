@@ -14,7 +14,7 @@
             <div class="card-body">
                 <div class="text-center mb-3">
                     <i class="icon-lock2 icon-2x text-secondary border-secondary border-3 rounded-pill p-3 mb-3 mt-1"></i>
-                    <h5 class="mb-0">{{ Str::title(_trans($namespace, 'auth.message.update_password')) }}</h5>
+                    <h5 class="mb-0 text-capitalize">{{_trans($namespace, 'auth.message.update_password')}}</h5>
                     <!-- <span class="d-block text-muted">{{ __('auth.message.password_recovery') }}</span> -->
                 </div>
 

@@ -41,11 +41,11 @@
                 ])
 
                 <div class="form-group text-center text-muted content-divider">
-                    <span class="px-2">{{ Str::title(_trans($namespace, 'auth.message.have_an_account')) }}</span>
+                    <span class="px-2 text-capitalize">{{_trans($namespace, 'auth.message.have_an_account')}}</span>
                 </div>
 
                 <div class="form-group">
-                    <a href="{{ route('admins.login') }}" class="d-block text-center">{{ Str::title(_trans($namespace, 'auth.message.login')) }}</a>
+                    <a href="{{ route('admins.login') }}" class="d-block text-center text-capitalize">{{_trans($namespace, 'auth.message.login')}}</a>
                 </div>
             </div>
         </div>

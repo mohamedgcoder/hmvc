@@ -50,6 +50,24 @@
             closeWith: ['click']
         }).show();
     };
+
+
+    function clearCache()
+    {
+        $('#loading').show();
+        $.ajax({
+            url: "{{route('settings.clear.cashe')}}",
+            method: 'PUT',
+            success: function (res) {
+                $('#loading').hide();
+                if(res){
+                    location.reload();
+                }
+            },
+            error: function (xhr, status, error) {
+            }
+        });
+    }
 </script>
 
 @stack('footer-scripts')

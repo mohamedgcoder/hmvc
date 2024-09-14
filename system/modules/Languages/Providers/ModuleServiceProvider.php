@@ -75,7 +75,7 @@ class ModuleServiceProvider extends ServiceProvider
     {
         try{
             if(Schema::hasTable('languages') && Schema::hasTable('settings')){
-                // config('app.locale', _settings('language', 'default'));
+                // config(['app.default_based_on_device' => _settings('language', 'default')]);
             }
         }catch(\Exception $e){
             return $e->getMessage();

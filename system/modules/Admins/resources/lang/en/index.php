@@ -27,6 +27,7 @@ return [
 
     'dashboard' => [
         'title' => 'dashboard',
+        'clear cache' => 'clear cache',
     ],
 
     'profile' => [

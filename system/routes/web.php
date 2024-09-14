@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/create', function () {
     $file = _RD(). 'assets/global/data/languages/all.json';
     $languages = json_decode(file_get_contents($file), true);

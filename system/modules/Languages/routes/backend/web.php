@@ -90,8 +90,8 @@ if(_moduleHasRoute($moduleName)){
                 // Route here
                 Route::controller(LanguagesController::class)->group(function () use($moduleName){
                     Route::get('/', 'index')->name('locales');
-                    Route::get('/add', 'create')->name('add');
                     Route::get('/save', 'store')->name('save');
+                    // Route::get('/add', 'create')->name('add');
 
                     Route::get('/translations', 'translations')->name('translations');
                     Route::get('all', 'getAllAjax')->name('getall');

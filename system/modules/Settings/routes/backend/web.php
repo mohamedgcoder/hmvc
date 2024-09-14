@@ -44,7 +44,7 @@ if(_moduleHasRoute($moduleName)){
 
                     Route::put('update-settings', 'update')->name('update');
 
-                    Route::get('clear-cashe', 'clearCashe')->name('clear.cashe');
+                    Route::put('clear-cashe', 'clearCashe')->name('clear.cashe');
                 });
             });
 

@@ -38,46 +38,46 @@ class Data{
         ];
     }
 
-    public static function getContactSettings()
-    {
-        $appName = (DB::connection()->getName() == 'tenant')? DB::getDatabaseName() : env('APP_NAME');
-        $domain = (DB::connection()->getName() == 'tenant')? Str::lower($appName).'.'.env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN')) : env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN'));
+    // public static function getContactSettings()
+    // {
+    //     $appName = (DB::connection()->getName() == 'tenant')? DB::getDatabaseName() : env('APP_NAME');
+    //     $domain = (DB::connection()->getName() == 'tenant')? Str::lower($appName).'.'.env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN')) : env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN'));
 
-        return [
-            'contact_form' => [
-                [
-                    'key' => 'email',
-                    'value' => 1,
-                    'translation' => false,
-                ],
-                [
-                    'key' => 'name',
-                    'value' => 1,
-                    'translation' => false,
-                ],
-                [
-                    'key' => 'phone',
-                    'value' => false,
-                    'translation' => false,
-                ],
-                [
-                    'key' => 'domain',
-                    'value' => false,
-                    'translation' => false,
-                ],
-                [
-                    'key' => 'subject',
-                    'value' => 1,
-                    'translation' => false,
-                ],
-                [
-                    'key' => 'message',
-                    'value' => 1,
-                    'translation' => false,
-                ],
-            ]
-        ];
-    }
+    //     return [
+    //         // 'contact_form' => [
+    //         //     [
+    //         //         'key' => 'email',
+    //         //         'value' => 1,
+    //         //         'translation' => false,
+    //         //     ],
+    //         //     [
+    //         //         'key' => 'name',
+    //         //         'value' => 1,
+    //         //         'translation' => false,
+    //         //     ],
+    //         //     [
+    //         //         'key' => 'phone',
+    //         //         'value' => false,
+    //         //         'translation' => false,
+    //         //     ],
+    //         //     [
+    //         //         'key' => 'domain',
+    //         //         'value' => false,
+    //         //         'translation' => false,
+    //         //     ],
+    //         //     [
+    //         //         'key' => 'subject',
+    //         //         'value' => 1,
+    //         //         'translation' => false,
+    //         //     ],
+    //         //     [
+    //         //         'key' => 'message',
+    //         //         'value' => 1,
+    //         //         'translation' => false,
+    //         //     ],
+    //         // ],
+    //     ];
+    // }
 
     public static function getMailSettings()
     {
@@ -85,7 +85,7 @@ class Data{
         $domain = (DB::connection()->getName() == 'tenant')? Str::lower($appName).'.'.env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN')) : env('APP_NAME').'.'.Str::lower(env('APP_DOMAIN'));
 
         return [
-            'settings' => [
+            'mail' => [
                 // mail
                 [
                     'key' => 'transport',
@@ -147,7 +147,8 @@ class Data{
                     'value' => Str::lower($appName),
                     'translation' => false,
                 ],
-
+            ],
+            'contact' => [
                 // contact
                 [
                     'key' => 'phone',

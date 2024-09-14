@@ -11,8 +11,8 @@
                         <li class="nav-item">
                             <a href="{{route($item['module'].'.'.$item['url'])}}" class="nav-link @if(Str::lower(session('menu-item')[0]) == $item['module'].'-'.$item['url'])active @endif">
                                 <i class="{{$item['icon']}}" title="{{ $item['name'] }}"></i>
-                                <span>
-                                    {{Str::title($item['name'])}}
+                                <span class="text-capitalize">
+                                    {{$item['name']}}
                                     {{-- <span class="d-block font-weight-normal opacity-50">No active orders</span> --}}
                                 </span>
                             </a>

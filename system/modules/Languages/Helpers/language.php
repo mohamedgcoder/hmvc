@@ -68,19 +68,23 @@ if (!function_exists('_current_Language')) {
 if (!function_exists('_default_lang')) {
     function _default_lang()
     {
-        $defaultLang = env('APP_LANGUAGE');
-        if(!Setting::where(['setting' => 'default_based_on_device', 'module' => 'language'])->first()->value){
-            return $defaultLang;
-        }
-
-        // check if supported language or not
-        foreach(_get_languages() as $key => $value) {
-            if(in_array($key, _browser_languages())){
-                return $key;
+        try {
+            $defaultLang = env('APP_LANGUAGE');
+            if(!config('default_based_on_device')){
+                return $defaultLang;
             }
-        }
 
-        return $defaultLang;
+            // check if supported language or not
+            foreach(_get_languages() as $key => $value) {
+                if(in_array($key, _browser_languages())){
+                    return $key;
+                }
+            }
+
+            return $defaultLang;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
 
@@ -96,8 +100,12 @@ if (!function_exists('_browser_languages')) {
     function _browser_languages()
     {
         // get browser accept languages
-        $agent = new Agent();
-        return $agent->languages();
+        try {
+            $agent = new Agent();
+            return $agent->languages();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
 
@@ -146,28 +154,6 @@ if (!function_exists('_get_all_languages')) {
         return $languages;
     }
 }
-
-// /*
-// |--------------------------------------------------------------------------
-// | flags from folder
-// |--------------------------------------------------------------------------
-// |
-// | //
-// |
-//  */
-// if (!function_exists('_get_flags')) {
-//     function _get_flags()
-//     {
-//         $flags = [];
-//         try {
-//             $directory = _RD(). '/assets/global/flags';
-//             $flags = array_diff(scandir($directory), ['..', '.', 'svg']);
-//         } catch (\Throwable $th) {
-//             // throw $th;
-//         }
-//         return $flags;
-//     }
-// }
 
 /*
 |--------------------------------------------------------------------------

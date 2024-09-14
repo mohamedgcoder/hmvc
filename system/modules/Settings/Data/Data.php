@@ -65,6 +65,11 @@ class Data{
                     'translation' => false,
                 ],
                 [
+                    'key' => 'cache_remember_time',
+                    'value' => 10000,
+                    'translation' => false,
+                ],
+                [
                     // api pagination For Front site only
                     'key' => 'api_pagination',
                     'value' => 0,

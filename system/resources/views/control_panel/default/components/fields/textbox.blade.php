@@ -2,7 +2,7 @@
     <input
         id="{{$id}}"
         type="@if(isset($type)){{$type}}@else text @endif"
-        class="form-control"
+        class="text-capitalize form-control"
         @if(isset($placeholder))placeholder="{{$placeholder}}" @endif
         name="{{$name}}"
         value="@if(isset($value)){{$value}}@endif"

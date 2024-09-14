@@ -30,8 +30,10 @@ return new class extends Migration
             $table->string('created_by', 64);
             $table->string('last_updated_by', 64)->nullable();
 
+            $table->softDeletes();
+
             // index
-            $table->index(['id', 'code', 'flag']);
+            $table->index(['id', 'code', 'flag', 'status']);
         });
     }
 

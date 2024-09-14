@@ -10,7 +10,6 @@
  */
 
 use Module\Menus\Models\Menu;
-use Illuminate\Support\Facades\Auth;
 use Module\Menus\Http\Resources\MenuResource;
 use Module\Languages\Service\LanguagesService;
 
@@ -19,7 +18,6 @@ if (!function_exists('_getMenu')) {
     {
         // cached and return menu
         $cacheName = _get_cache_name('menu');
-        // _forget_cache($cacheName);
         return cache()->remember($cacheName, _cache_remember_time(), function() use($type) {
             $menu = [];
             $groups = Menu::where(function($query) use ($type){

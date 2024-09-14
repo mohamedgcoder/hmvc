@@ -29,28 +29,27 @@ Route::group(['prefix' => _prefix('panel'), 'as' => 'admins.'], function () use(
     Route::middleware(_moduleMiddleware($moduleName))->group(function (){
 
         // with middleware guest
-        Route::get('/login', [LoginController::class, 'login'])->name('login');
-        Route::post('/signin', [LoginController::class, 'signin'])->name('signin');
-        Route::get('/password-recover', [ResetPasswordController::class, 'forgetPassword'])->name('forgetPassword');
-        Route::post('/password-recover', [ResetPasswordController::class, 'recoverPassword'])->name('recoverPassword');
-        Route::get('/password-reset', [ResetPasswordController::class, 'resetPassword'])->name('resetPassword');
-        Route::put('/password-set', [ResetPasswordController::class, 'setNewPassword'])->name('setNewPassword');
+        Route::get('login', [LoginController::class, 'login'])->name('login');
+        Route::post('signin', [LoginController::class, 'signin'])->name('signin');
+        Route::get('password-recover', [ResetPasswordController::class, 'forgetPassword'])->name('forgetPassword');
+        Route::post('password-recover', [ResetPasswordController::class, 'recoverPassword'])->name('recoverPassword');
+        Route::get('password-reset', [ResetPasswordController::class, 'resetPassword'])->name('resetPassword');
+        Route::put('password-set', [ResetPasswordController::class, 'setNewPassword'])->name('setNewPassword');
 
         // ajax check email if exist
-        Route::post('/check-if-email-exist', [ResetPasswordController::class, 'checkIfEmailExistAjax'])->name('check.email');
+        Route::post('check-if-email-exist', [ResetPasswordController::class, 'checkIfEmailExistAjax'])->name('check.email');
         // ajax check if old password
-        Route::post('/check-if-old-password', [ResetPasswordController::class, 'checkIfOldPasswordAjax'])->name('check.password.old');
+        Route::post('check-if-old-password', [ResetPasswordController::class, 'checkIfOldPasswordAjax'])->name('check.password.old');
     });
 
     Route::middleware(_moduleMiddleware($moduleName, "guest"))->group(function (){
 
-        Route::get('/unlock', [LoginController::class, 'lockAccount'])->name('unlock');
-        Route::post('/unlock', [LoginController::class, 'unlock'])->name('unlock');
-        Route::any('/logout', [LoginController::class, 'logout'])->name('logout');
+        Route::get('unlock', [LoginController::class, 'lockAccount'])->name('unlock');
+        Route::post('unlock', [LoginController::class, 'unlock'])->name('unlock');
+        Route::any('logout', [LoginController::class, 'logout'])->name('logout');
 
         Route::get('/', [DashboardController::class, 'index'])->name('panel');
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
+        Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     });
 
 });

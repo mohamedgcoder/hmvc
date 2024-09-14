@@ -8,13 +8,11 @@
 
 @section('breadcrumb')
     <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'title')) }}</span>
+    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'locales')) }}</span>
 @endsection
 
 @section('content')
 <div class="row">
-    <div class="col">
-        <h5 class="card-title text-muted">{{ Str::title(_trans($namespace, 'locales')) }}</h5>
-    </div>
     <div class="col text-right">
         <button class="btn btn-primary " type="button" data-toggle="collapse" data-target="#addLocale" aria-expanded="false" aria-controls="addLocale">
             {{Str::title(__('buttons.add the', ['add' => _trans($namespace, 'locale')]))}}
@@ -118,12 +116,12 @@
     </div>
 </div>
 
-<div class="row">
+
+<div class="row mt-2">
     <div class="col-lg-12">
         <div class="card">
-            {{-- <div class="card-body">{{ Str::title(_trans($namespace, 'locales'))}}</div> --}}
             <div class="card-body">
-
+                <table id="localesTable" class="table mb-2"></table>
             </div>
         </div>
     </div>
@@ -131,8 +129,14 @@
 @endsection()
 
 @push('footer-scripts')
+    @include(_moduleName($namespace).'::panel.components.locales-datatables')
     @include(_current_theme('components.js.select'))
     <script>
+        $('.flags').select2({
+            templateResult: formatOption,
+            templateSelection: formatOption
+        });
+
         function formatOption(option) {
             var image = option.id;
             if(image != undefined){
@@ -140,11 +144,5 @@
                 return optionWithImage;
             }
         }
-
-        $('.flags').select2({
-            templateResult: formatOption,
-            templateSelection: formatOption
-        });
-
     </script>
 @endpush

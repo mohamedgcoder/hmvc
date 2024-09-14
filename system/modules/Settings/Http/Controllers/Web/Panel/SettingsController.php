@@ -169,7 +169,6 @@ class SettingsController extends Controller
                     Setting::where('setting', $setting)->update(['value' => $value]);
                 }
             }
-
             _set_config_settings();
 
         } catch (\Throwable $th) {
@@ -220,5 +219,6 @@ class SettingsController extends Controller
     public function clearCashe()
     {
         Artisan::call('optimize:clear', ['--quiet' => true]);
+        return true;
     }
 }

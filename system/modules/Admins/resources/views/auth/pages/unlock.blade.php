@@ -47,7 +47,7 @@
                 ])
 
                 <div class="form-group d-flex align-items-center">
-                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
+                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto text-capitalize">{{_trans($namespace, 'auth.message.forgot_password')}}</a>
                 </div>
 
                 @include(_current_theme('components.buttons.primary'), [

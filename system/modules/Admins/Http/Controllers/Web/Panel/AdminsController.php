@@ -177,9 +177,9 @@ class AdminsController extends Controller
 
                 return DataTables::of($collection)
                     ->addIndexColumn()
-                    // ->addColumn('avatar', function($row) {
-                    //     return (!empty($row->profile_pic))? $row->profile_pic : url('public/images/placeholders/admin_'. $row['gender']['code'] .'.png') ;
-                    // })
+                    ->addColumn('avatar', function($row) {
+                        return (!empty($row->profile_pic))? _get_image($row->profile_pic, 'profile') : url('uploads/images/placeholders/admin_'. $row['gender']['code'] .'.png') ;
+                    })
                     // ->addColumn('status', function($row) {
                     //     return '<span class="badge badge-'.$row['status']['color'].'">'.$row['status']['name'].'</span>';
                     // })
@@ -222,20 +222,20 @@ class AdminsController extends Controller
      * to det specific cached data for this admin
      * and return with @admin data
      */
-    static function forgetAdminCache($cacheName)
-    {
-        $admin = Auth::user()->code;
+    // static function forgetAdminCache($cacheName)
+    // {
+    //     $admin = Auth::user()->code;
 
-        if(cache()->has('panel-current-admin-'.$admin->code)){
-            $currentAdmin = cache('panel-current-admin-'.$admin->code);
-            if($currentAdmin['code'] != $admin->code){
-                _forget_cache($cacheName);
-                _forget_cache('panel-current-admin-'.$admin->code);
-            }
-        }
+    //     if(cache()->has('panel-current-admin-'.$admin->code)){
+    //         $currentAdmin = cache('panel-current-admin-'.$admin->code);
+    //         if($currentAdmin['code'] != $admin->code){
+    //             _forget_cache($cacheName);
+    //             _forget_cache('panel-current-admin-'.$admin->code);
+    //         }
+    //     }
 
-        return cache()->remember('panel-current-admin-'.$admin->code, 60*60*24, function() use($admin){return $admin;});
-    }
+    //     return cache()->remember('panel-current-admin-'.$admin->code, 60*60*24, function() use($admin){return $admin;});
+    // }
 
     public static function generateAdminCode($name = '', $type = null)
     {

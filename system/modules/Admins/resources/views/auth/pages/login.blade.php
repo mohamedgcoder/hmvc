@@ -25,7 +25,7 @@
                 @include(_current_theme('components.fields.textbox'), [
                     'id' => 'auth_email',
                     'name' => 'login',
-                    'placeholder' => Str::title(_trans($namespace, 'email')),
+                    'placeholder' => _trans($namespace, 'email'),
                     'oninput' => 'checkIfFoundEmail()',
                     'icon' => 'far fa-envelope  text-muted',
                     'iconPosition' => 'left',
@@ -36,7 +36,7 @@
                     'id' => 'login-password',
                     'name' => 'password',
                     'type' => 'password',
-                    'placeholder' => Str::title(_trans($namespace, 'auth.password')),
+                    'placeholder' => _trans($namespace, 'auth.password'),
                     'oninput' => 'validatePassword()',
                     'icon' => 'icon-lock2 text-muted',
                     'iconPosition' => 'left',
@@ -49,7 +49,7 @@
                         <span class="custom-control-label">{{ Str::title(_trans($namespace, 'auth.remember')) }}</span>
                     </label> --}}
 
-                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto">{{ Str::title(_trans($namespace, 'auth.message.forgot_password')) }}</a>
+                    <a href="{{ route('admins.forgetPassword') }}" class="ml-auto text-capitalize">{{_trans($namespace, 'auth.message.forgot_password')}}</a>
                 </div>
 
                 @if(_settings('settings', 'expiration_logged_in') !== null && _settings('settings', 'expiration_logged_in') > 0)
@@ -64,7 +64,7 @@
                     'type' => 'submit',
                     'style' => 'btn',
                     'class' => 'btn-block',
-                    'value' => Str::title(_trans($namespace, 'auth.button.signin')),
+                    'value' => _trans($namespace, 'auth.button.signin'),
                     'disabled' => true,
                 ])
 

@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 
+use function PHPUnit\Framework\isNull;
+
 /*
 |--------------------------------------------------------------------------
 | Return RD ( route directory )
@@ -215,10 +217,10 @@ if (!function_exists('_auth')) {
 |
 |
  */
-if (!function_exists('_get_cache_name')) {
-    function _get_cache_name(string $key)
+if (!function_exists('_cache_remember_time')) {
+    function _cache_remember_time()
     {
-        return _settings('settings', 'system_key').'-'.$key.'-'._current_Language().'-'.(Auth::check()? Auth::user()->code : '');
+        return _settings('general', 'cache_remember_time');
     }
 }
 
@@ -230,10 +232,10 @@ if (!function_exists('_get_cache_name')) {
 |
 |
  */
-if (!function_exists('_cache_remember_time')) {
-    function _cache_remember_time()
+if (!function_exists('_get_cache_name')) {
+    function _get_cache_name(string $key)
     {
-        return _settings('general', 'cache_remember_time');
+        return _settings('settings', 'system_key').'-'.$key.'-'._current_Language().'-'.(Auth::check()? Auth::user()->code : '');
     }
 }
 
@@ -246,9 +248,14 @@ if (!function_exists('_cache_remember_time')) {
 |
  */
 if (!function_exists('_forget_cache')) {
-    function _forget_cache(string $cache_name)
+    function _forget_cache(string  $cache_name) :bool
     {
-        cache()->forget(_get_cache_name($cache_name));
+        try {
+            cache()->forget(_get_cache_name($cache_name));
+            return true;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
 

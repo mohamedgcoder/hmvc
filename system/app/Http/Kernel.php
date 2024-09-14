@@ -67,7 +67,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'api.auth' => \App\Http\Middleware\ApiAuthenticate::class,
-        'tenant' => \Tenancy\Http\Middleware\TenantsMiddleware::class,
+        // 'tenant' => \Tenancy\Http\Middleware\TenantsMiddleware::class,
         'checkRequest' => \App\Http\Middleware\chekRequestIfEmpty::class,
     ];
 

@@ -28,6 +28,7 @@ if (!function_exists('_get_settings')) {
         } catch (\Throwable $th) {
             // throw $th;
         }
+
         return $settings;
     }
 }

@@ -24,28 +24,31 @@
 			<li class="nav-item nav-item-dropdown-lg dropdown dropdown-user h-100">
 				<a href="#" class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100" data-toggle="dropdown">
 					<img src="{{ _get_image(auth()->user()->profile_pic, 'profile') }}" class="rounded-pill mr-lg-2" height="34" width="34" alt="{{ auth()->user()->name }}" style="border: 2px solid #ffffff">
-					<span class="d-none d-lg-inline-block">{{ Str::ucfirst(auth()->user()->name) }}</span>
+					<span class="d-none d-lg-inline-block text-capitalize">{{ auth()->user()->name }}</span>
 				</a>
 
 				<div class="dropdown-menu dropdown-menu-right">
-					<a href="{{ url('') }}" class="dropdown-item">
-                        <i class="icon-file-eye2"></i>
-                        {{ Str::title(_trans('admins', 'front.view')) }}
+                    <a href="{{ url('') }}" class="dropdown-item text-capitalize">
+                        <i class="fas fa-external-link-alt"></i>
+                        {{ _trans('admins', 'front.view') }}
                     </a>
-					<div class="dropdown-divider"></div>
-					<a href="{{ route('admins.profile') }}#update" class="dropdown-item">
+					<a href="{{ route('admins.profile') }}#update" class="dropdown-item text-capitalize">
                         <i class="fas fa-id-card-alt"></i>
-                        {{ Str::title(_trans('admins', 'profile.my_profile')) }}
+                        {{ _trans('admins', 'profile.my_profile') }}
                     </a>
-					<a href="#" class="dropdown-item">
+					<a href="#" class="dropdown-item text-capitalize">
                         <i class="fas fa-user-cog"></i>
-                        {{ Str::title(_trans('admins', 'profile.account_settings')) }}
+                        {{ _trans('admins', 'profile.account_settings') }}
                     </a>
-                    @include(_current_theme('components.switch_dark_mode'))
 					<div class="dropdown-divider"></div>
-					<a href="{{ route('admins.logout') }}" class="dropdown-item">
-                        <i class="icon-switch2"></i>
-                        {{ Str::title(_trans('admins', 'auth.logout')) }}
+                    @include(_current_theme('components.switch_dark_mode'))
+                    <a href="#" class="dropdown-item text-capitalize" onclick="clearCache()">
+                        <i class="fas fa-sync"></i>
+                        {{ _trans('admins', 'dashboard.clear cache') }}
+                    </a>
+					<a href="{{ route('admins.logout') }}" class="dropdown-item text-capitalize">
+                        <i class="fas fa-sign-out-alt"></i>
+                        {{ _trans('admins', 'auth.logout') }}
                     </a>
 				</div>
 			</li>
