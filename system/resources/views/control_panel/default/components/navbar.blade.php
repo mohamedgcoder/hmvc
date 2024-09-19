@@ -7,8 +7,17 @@
 
     <div class="navbar-brand text-center text-lg-left">
         <a href="{{ route('admins.panel') }}" class="d-inline-block">
-            <img src="{{ _logo(null, 'light') }}" class="d-none d-sm-block" alt="{{ implode(' ', Str::ucsplit(_settings('settings', 'name'))) }}">
-            <img src="{{ _logo('icon', 'light') }}" class="d-sm-none" alt="{{ implode(' ', Str::ucsplit(_settings('settings', 'name'))) }}">
+            @if(_logo(null, session('theme-mode')) != false)
+                <img src="{{ _logo(null, session('theme-mode')) }}" class="d-none d-sm-block" alt="{{ implode(' ', Str::ucsplit($appName)) }}">
+            @else
+            {{ implode(' ', Str::ucsplit($appName)) }}
+            @endif
+            {{-- mobile view --}}
+            @if(_logo('icon', session('theme-mode')) != false)
+                <img src="{{ _logo('icon', session('theme-mode')) }}" class="d-sm-none" alt="{{ implode(' ', Str::ucsplit($appName)) }}">
+            @else
+            {{ implode(' ', Str::ucsplit($appName)) }}
+            @endif
         </a>
     </div>
 
@@ -17,9 +26,13 @@
     <div class="order-1 order-lg-2 d-flex flex-1 flex-lg-0 justify-content-end align-items-center">
         <ul class="navbar-nav flex-row order-1 order-lg-2 flex-1 flex-lg-0 justify-content-end align-items-center">
 
-			<!-- Languages -->
+			{{-- switch_dark_mode --}}
+			@include(_current_theme('components.switch_dark_mode.index'), ['js' => 'main'])
+			{{-- /switch_dark_mode --}}
+
+			{{-- Languages --}}
 			@include(_current_theme('components.languages'))
-			<!-- /languages -->
+			{{-- /languages --}}
 
 			<li class="nav-item nav-item-dropdown-lg dropdown dropdown-user h-100">
 				<a href="#" class="navbar-nav-link navbar-nav-link-toggler dropdown-toggle d-inline-flex align-items-center h-100" data-toggle="dropdown">
@@ -41,7 +54,7 @@
                         {{ _trans('admins', 'profile.account_settings') }}
                     </a>
 					<div class="dropdown-divider"></div>
-                    @include(_current_theme('components.switch_dark_mode'))
+
                     <a href="#" class="dropdown-item text-capitalize" onclick="clearCache()">
                         <i class="fas fa-sync"></i>
                         {{ _trans('admins', 'dashboard.clear cache') }}

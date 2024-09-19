@@ -8,7 +8,7 @@
 
 <link rel="shortcut icon" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="{{ _favicon() }}">
 
-<meta name="application-name" content="{{ Str::title(_settings('settings', 'name')) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
+<meta name="application-name" content="{{ Str::title($appName) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
 <meta name="msapplication-TileImage" content=""/>
 <meta name="msapplication-TileColor" content="{{ _settings('settings', 'main_color') }}"/>
 <meta name="msapplication-square70x70logo" content=""/>
@@ -18,18 +18,18 @@
 <link rel="apple-touch-icon-precomposed" href=""/>
 
 <meta property="og:type" content="website"/>
-<meta property="og:site_name" content="{{ Str::title(_settings('settings', 'name')) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
+<meta property="og:site_name" content="{{ Str::title($appName) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
 <meta property="og:locale" content="{{ app()->getLocale() }}"/>
 <meta property="og:locale:alternate" content="{{ app()->getLocale() }}"/>
 <meta property="og:url" content="{{ url('') }}"/> <!-- url of main request -->
-<meta property="og:title" content="{{ Str::title(_settings('settings', 'name')) }} @yield('title')"/>
+<meta property="og:title" content="{{ Str::title($appName) }} @yield('title')"/>
 <meta property="og:description" content="Description of page seo"/>
 
 <meta property="og:image" content="@if(auth()->check()){{ _get_image(auth()->user()->profile_pic, 'profile') }}@else logo Dimentions 630*630 @endif"/>
 <meta property="og:image:width" content="256"/>
 <meta property="og:image:height" content="256"/>
 
-<meta itemprop="name" content="{{ Str::title(_settings('settings', 'name')) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
+<meta itemprop="name" content="{{ Str::title($appName) }} {{ _title_separation() }}{{ Str::title(_settings('settings', 'slogan')) }}"/>
 <meta itemprop="url" content="{{ url('') }}"/> <!-- url of main request -->
 <meta itemprop="author" content="{{ Str::title(ENV('APP_NAME')) }}"/>
 <meta itemprop="image" content="@if(auth()->check()){{ _get_image(auth()->user()->profile_pic, 'profile') }}@else logo Dimentions 630*630 @endif"/>
@@ -39,9 +39,9 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:site" content="{{ Str::title(_settings('social', 'twitter')) }}"/>
 <meta name="twitter:creator" content="{{ Str::title(_settings('social', 'twitter')) }}"/>
-<meta name="twitter:title" content="{{ Str::title(_settings('settings', 'name')) }} @yield('title')"/>
+<meta name="twitter:title" content="{{ Str::title($appName) }} @yield('title')"/>
 <meta name="twitter:image" content=""/>
-<meta name="twitter:image:alt" content="{{ Str::title(_settings('settings', 'name')) }} @yield('title')"/>
+<meta name="twitter:image:alt" content="{{ Str::title($appName) }} @yield('title')"/>
 <meta name="twitter:description" content="Description of page seo"/>
 @endif
 <!-- Chrome, Firefox OS and Opera -->

@@ -7,7 +7,7 @@
 @section('title', _title_separation() . Str::title($title))
 
 @section('content')
-Dashboard
+<h1 class="text-primary">Dashboard</h1>
 @endsection()
 
 @push('scripts')

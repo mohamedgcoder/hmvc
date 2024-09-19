@@ -7,14 +7,14 @@
 @section('title', _title_separation().Str::title($title))
 
 @section('breadcrumb')
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'title')) }}</span>
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'identity.title')) }}</span>
+    <a href="{{ route(_modulePrefix($namespace).'.general') }}" class="breadcrumb-item text-capitalize">{{ _trans($namespace, 'title') }}</a>
+    <span class="breadcrumb-item active text-capitalize">{{ _trans($namespace, 'identity.title') }}</span>
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h5 class="card-title text-muted">{{ Str::title(_trans($namespace, 'identity.header')) }}</h5>
+        <h5 class="card-title text-muted text-capitalize">{{ _trans($namespace, 'identity.header') }}</h5>
     </div>
 </div>
 

@@ -37,7 +37,7 @@ class SettingsController extends Controller
 
         _active_menu([$this->namespace, $this->module]);
 
-        return view(_moduleName($this->namespace) . '::index', ['namespace' => $this->namespace, 'module' => $this->module], compact(['title']));
+        return view(_moduleName($this->namespace) . '::panel.pages.index', ['namespace' => $this->namespace, 'module' => $this->module], compact(['title']));
     }
 
     public function identitySettings()

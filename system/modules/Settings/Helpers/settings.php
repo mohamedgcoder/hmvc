@@ -13,8 +13,8 @@ use Module\Settings\Models\Setting;
 if (!function_exists('_get_settings')) {
     function _get_settings()
     {
-        $settings = [];
         try {
+            $settings = [];
             $data = Setting::with('valueTrans')->where('autoload', 1)->get();
 
             foreach ($data as $setting) {
@@ -25,11 +25,11 @@ if (!function_exists('_get_settings')) {
                 }
                 array_push($settings, $setting);
             }
+            return $settings;
+
         } catch (\Throwable $th) {
             // throw $th;
         }
-
-        return $settings;
     }
 }
 

@@ -57,7 +57,7 @@
                                 </div>
                                 @endif
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>
                                         {{ Str::title(_trans($namespace, 'system.expiration_logged_in')) }}:
                                         @include(_current_theme('components.tooltip'), [
@@ -66,7 +66,7 @@
                                         ])
                                     </label>
                                     <input type="text" class="form-control" name="expiration_logged_in" value="{{_settings('settings', 'expiration_logged_in')}}">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label>
@@ -119,7 +119,7 @@
                                 </div>
                                 @endif
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>
                                         {{ Str::title(_trans($namespace, 'system.expiration_reset_password')) }}:
                                         @include(_current_theme('components.tooltip'), [
@@ -128,7 +128,7 @@
                                         ])
                                     </label>
                                     <input type="text" class="form-control" name="expiration_reset_password" value="{{_settings('settings', 'expiration_reset_password')}}">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label>{{ Str::title(_trans($namespace, 'system.web_pagination')) }}:

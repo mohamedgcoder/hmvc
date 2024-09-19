@@ -113,6 +113,12 @@ class Data{
                 [
                     // Main Color
                     'key' => 'main_color',
+                    'value' => '#157a77',
+                    'translation' => false,
+                ],
+                [
+                    // Button Color
+                    'key' => 'main_button',
                     'value' => '#ffffff',
                     'translation' => false,
                 ],
@@ -219,87 +225,77 @@ class Data{
                         ],
                         'children' => [
                             [
-                                'url' => 'identity',
+                                'url' => 'general',
                                 'children' => null,
-                                'icon' => 'fas fa-fingerprint',
+                                'icon' => 'fas fa-cogs',
                                 'name' => [
-                                    'en' => 'identity',
-                                    'ar' => 'الهوية',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'appearance',
-                                'children' => null,
-                                'icon' => 'fas fa-theater-masks',
-                                'name' => [
-                                    'en' => 'appearance',
-                                    'ar' => 'المظهر العام',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'system',
-                                'children' => null,
-                                'icon' => 'fas fa-wrench',
-                                'name' => [
-                                    'en' => 'system',
-                                    'ar' => 'معلومات النظام',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'seo',
-                                'children' => null,
-                                'icon' => 'fab fa-searchengin',
-                                'name' => [
-                                    'en' => 'seo',
-                                    'ar' => 'محركات البحث',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'social',
-                                'children' => null,
-                                'icon' => 'fas fa-share-alt',
-                                'name' => [
-                                    'en' => 'social',
-                                    'ar' => 'التواصل الاجتماعي',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'security',
-                                'children' => null,
-                                'icon' => 'fas fa-key',
-                                'name' => [
-                                    'en' => 'security',
-                                    'ar' => 'الحماية',
-                                ],
-                                'arrangement' => 1,
-                            ],
-                            [
-                                'url' => 'integrations',
-                                'children' => null,
-                                'icon' => 'fas fa-link',
-                                'name' => [
-                                    'en' => 'integrations',
-                                    'ar' => 'الربط الخارجى',
+                                    'en' => 'general',
+                                    'ar' => 'إعدادات عامة',
                                 ],
                                 'arrangement' => 1,
                             ],
                             // [
-                            //     'url' => 'contacts',
+                            //     'url' => 'appearance',
                             //     'children' => null,
-                            //     'icon' => 'fas fa-address-book',
+                            //     'icon' => 'fas fa-theater-masks',
                             //     'name' => [
-                            //         'en' => 'contacts',
-                            //         'ar' => 'التواصل',
+                            //         'en' => 'appearance',
+                            //         'ar' => 'المظهر العام',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                            // [
+                            //     'url' => 'system',
+                            //     'children' => null,
+                            //     'icon' => 'fas fa-wrench',
+                            //     'name' => [
+                            //         'en' => 'system',
+                            //         'ar' => 'معلومات النظام',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                            // [
+                            //     'url' => 'seo',
+                            //     'children' => null,
+                            //     'icon' => 'fab fa-searchengin',
+                            //     'name' => [
+                            //         'en' => 'seo',
+                            //         'ar' => 'محركات البحث',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                            // [
+                            //     'url' => 'social',
+                            //     'children' => null,
+                            //     'icon' => 'fas fa-share-alt',
+                            //     'name' => [
+                            //         'en' => 'social',
+                            //         'ar' => 'التواصل الاجتماعي',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                            // [
+                            //     'url' => 'security',
+                            //     'children' => null,
+                            //     'icon' => 'fas fa-key',
+                            //     'name' => [
+                            //         'en' => 'security',
+                            //         'ar' => 'الحماية',
+                            //     ],
+                            //     'arrangement' => 1,
+                            // ],
+                            // [
+                            //     'url' => 'integrations',
+                            //     'children' => null,
+                            //     'icon' => 'fas fa-link',
+                            //     'name' => [
+                            //         'en' => 'integrations',
+                            //         'ar' => 'الربط الخارجى',
                             //     ],
                             //     'arrangement' => 1,
                             // ],
                         ],
-                        'icon' => 'fas fa-cogs',
+                        'icon' => 'fas fa-sliders-h',
                         'arrangement' => 1,
                     ],
                 ],

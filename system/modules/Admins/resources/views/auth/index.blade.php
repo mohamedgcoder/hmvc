@@ -16,6 +16,16 @@
                 <!-- Inner content -->
                 <div class="content-inner">
 
+                    <ul class="navbar-nav flex-row align-items-center">
+                        {{-- switch_dark_mode --}}
+                        @include(_current_theme('components.switch_dark_mode.index'), ['js' => 'auth'])
+                        {{-- /switch_dark_mode --}}
+
+                        {{-- Languages --}}
+                        @include(_current_theme('components.languages'))
+                        {{-- /languages --}}
+                    </ul>
+
                     <!-- Content area -->
                     <div class="content d-flex justify-content-center align-items-center">
                         @yield('content')
@@ -38,32 +48,6 @@
     </body>
 
     @push('footer-scripts')
-        <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
-
-        <script>
-            $(function() {
-                if(Cookies.get('theme_mode') != 'undefined'){
-                    if(Cookies.get('theme_mode') == 'dark'){
-                        setDarkhref();
-                    }else{
-                        setLighthref();
-                    }
-                }
-            });
-
-            function setDarkhref()
-            {
-                var href = "{{ _assets('css/'._dir().'/auth-all-dark.min.css') }}";
-                $("#theme_mode").attr("checked", true);
-                $('#auth-theme-mode').attr('href', href);
-            }
-
-            function setLighthref()
-            {
-                var href = "{{ _assets('css/'._dir().'/auth-all.min.css') }}";
-                $('#auth-theme-mode').attr('href', href);
-            }
-        </script>
     @endpush
 
     @include(_current_theme('layouts.footer.scripts'))

@@ -7,14 +7,71 @@
 @section('title', _title_separation().Str::title($title))
 
 @section('breadcrumb')
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'title')) }}</span>
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'security.title')) }}</span>
+    <span class="breadcrumb-item active text-capitalize">{{ _trans($namespace, 'title') }}</span>
+    <span class="breadcrumb-item active text-capitalize">{{ _trans($namespace, 'security.title') }}</span>
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h5 class="card-title text-muted">{{ Str::title(_trans($namespace, 'security.header')) }}</h5>
+        <h5 class="card-title text-muted text-capitalize">{{ _trans($namespace, 'security.header') }}</h5>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <legend class="font-weight-semibold text-muted">
+                    <h5 class="card-title text-capitalize">{{_trans($namespace, 'system.title')}}</h5>
+                </legend>
+            </div>
+            <div class="card-body">
+                <form id="formSystem" action="#">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="text-capitalize">
+                                        {{ _trans($namespace, 'system.expiration_logged_in') }}:
+                                        @include(_current_theme('components.tooltip'), [
+                                            "position" => "top",
+                                            "data" => _trans($namespace, 'system.expiration_logged_in_note')
+                                        ])
+                                    </label>
+                                    <input type="text" class="form-control" name="expiration_logged_in" value="{{_settings('settings', 'expiration_logged_in')}}">
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="text-capitalize">
+                                        {{ _trans($namespace, 'system.expiration_reset_password') }}:
+                                        @include(_current_theme('components.tooltip'), [
+                                            "position" => "top",
+                                            "data" => _trans($namespace, 'system.expiration_logged_in_note')
+                                        ])
+                                    </label>
+                                    <input type="text" class="form-control" name="expiration_reset_password" value="{{_settings('settings', 'expiration_reset_password')}}">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+
+                    @include(_current_theme('components.buttons.spinner'), [
+                        "form" => "formSystem",
+                        "url" => Route('settings.update'),
+                        "id" => "system",
+                        "method" => 'PUT',
+                        "float" => "text-right",
+                        "value" => __('buttons.save_changes'),
+                    ])
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -74,6 +131,21 @@
 @endsection()
 
 @push('footer-scripts')
+    @include(_current_theme('components.js.select'))
+
+    <script>
+        var _success = function() {
+            new Noty({
+                theme: ' alert bg-success text-white alert-styled-left alert-arrow-left p-0',
+                header: 'success',
+                text: "{!! __( 'messages.saved') !!}",
+                type: 'alert',
+                progressBar: true,
+                closeWith: ['click']
+            }).show();
+        };
+    </script>
+
     <script type="text/javascript">
         function generateSystemKey()
         {

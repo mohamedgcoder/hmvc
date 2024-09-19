@@ -7,14 +7,14 @@
 @section('title', _title_separation().Str::title($title))
 
 @section('breadcrumb')
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'title')) }}</span>
-    <span class="breadcrumb-item active">{{ Str::title(_trans($namespace, 'appearance.title')) }}</span>
+    <a href="{{ route(_modulePrefix($namespace).'.general')}}" class="breadcrumb-item text-capitalize">{{_trans($namespace, 'title')}}</a>
+    <span class="breadcrumb-item active text-capitalize">{{_trans($namespace, 'appearance.title')}}</span>
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h5 class="card-title text-muted">{{ Str::title(_trans($namespace, 'appearance.header')) }}</h5>
+        <h5 class="card-title text-muted text-capitalize">{{_trans($namespace, 'appearance.header')}}</h5>
     </div>
 </div>
 
@@ -24,7 +24,7 @@
             <div class="card-body">
                 <form id="formAppearance" action="#">
                     <div class="form-group row">
-                        <label class="col-lg-4 col-form-label">{{ Str::title(_trans($namespace, 'appearance.title_separation')) }}:</label>
+                        <label class="col-lg-4 col-form-label text-capitalize">{{_trans($namespace, 'appearance.title_separation')}}:</label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" name="title_separation" value="{{_settings('settings', 'title_separation')}}">
                         </div>
@@ -46,8 +46,8 @@
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-12">
-                {{-- <h5 class="text-muted">{{ Str::title(_trans($namespace, 'integrations.header')) }}</h5> --}}
-                <h5 class="card-title text-muted">{{ Str::title(_trans($namespace, 'appearance.color')) }}</h5>
+                {{-- <h5 class="text-muted">{{ Str::title(_trans($namespace, 'integrations.header'))}}</h5> --}}
+                <h5 class="card-title text-muted text-capitalize">{{_trans($namespace, 'appearance.color')}}</h5>
             </div>
         </div>
         <div class="card border-left-primary">
@@ -57,7 +57,15 @@
                     <div class="row mt-2">
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.logo_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.main_color')}}:</label>
+                                <div class="float-right">
+                                    <input type="text" class="form-control colorpicker" name="main_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'main_color')}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 col-lg-3">
+                            <div class="form-group">
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.logo_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control colorpicker" name="logo_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'logo_color')}}">
                                 </div>
@@ -65,7 +73,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.navbar_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.navbar_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control navbar_color" name="navbar_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'navbar_color')}}">
                                 </div>
@@ -77,15 +85,15 @@
                     <div class="row mt-3">
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.button_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.button_color')}}:</label>
                                 <div class="float-right">
-                                    <input type="text" class="form-control main_color" name="main_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'main_color')}}">
+                                    <input type="text" class="form-control main_button" name="main_button" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'main_button')}}">
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.border_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.border_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control border_color" name="border_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'border_color')}}">
                                 </div>
@@ -93,7 +101,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.hover_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.hover_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control colorpicker hover_color" name="hover_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'hover_color')}}">
                                 </div>
@@ -101,7 +109,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.focus_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.focus_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control colorpicker focus_color" name="focus_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'focus_color')}}">
                                 </div>
@@ -109,7 +117,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.text_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.text_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control text_color" name="text_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'text_color')}}">
                                 </div>
@@ -117,7 +125,7 @@
                         </div>
                         <div class="col-sm-12 col-md-4 col-lg-3">
                             <div class="form-group">
-                                <label class="pt-1">{{ Str::title(_trans($namespace, 'appearance.text_hover_color')) }}:</label>
+                                <label class="pt-1 text-capitalize">{{_trans($namespace, 'appearance.text_hover_color')}}:</label>
                                 <div class="float-right">
                                     <input type="text" class="form-control colorpicker text_hover_color" name="text_hover_color" data-preferred-format="hex" data-show-buttons="true" data-fouc="" value="{{_settings('settings', 'text_hover_color')}}">
                                 </div>
@@ -142,7 +150,7 @@
 @endsection()
 
 @push('footer-scripts')
-    <script type="text/javascript" src="{{ _assets('js/plugins/pickers/color/spectrum.js') }}"></script>
+    <script type="text/javascript" src="{{_assets('js/plugins/pickers/color/spectrum.js')}}"></script>
     <script>
         $(".colorpicker").spectrum({
             showInitial: true, showInput: true, showAlpha: true, allowEmpty: true,
@@ -154,7 +162,7 @@
                 label.css('background-color', c);
             }
         });
-        $(".main_color").spectrum({
+        $(".main_button").spectrum({
             showInitial: true, showInput: true, showAlpha: true, allowEmpty: true,
             move: function(c) {
                 var label = $('.submit');
